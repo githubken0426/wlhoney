@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/wlhoney-web/pom.xml" />
         <option value="$PROJECT_DIR$/wlhoney-service/pom.xml" />
+        <option value="$PROJECT_DIR$/wlhoney-dao/pom.xml" />
       </list>
     </option>
   </component>

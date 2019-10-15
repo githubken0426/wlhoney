@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: eureka-ha
+---
+
+server:
+  port: 8995
+
+spring:
+  profiles: peer1
+  security:
+    user:
+      name: root
+      password: root
+eureka:
+  server:
+    peer-node-connect-timeout-ms: 2000
+  instance:
+    # when profile=peer1, hostname=peer1
+    hostname: peer1
+  client:
+    serviceUrl:
+      # register self to peer2
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@peer2:8996/eureka/
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+---
+spring:
+  profiles: peer2
+  security:
+    user:
+      name: root
+      password: root
+server:
+  port: 8996
+
+eureka:
+  instance:
+    # when profile=peer2, hostname=peer2
+    hostname: peer2
+  client:
+    serviceUrl:
+      # register self to peer1
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@peer1:8995/eureka/
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@

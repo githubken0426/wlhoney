@@ -8,6 +8,7 @@
     <artifactId>wlhoney</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>wlhoney-dao</module>
         <module>wlhoney-service</module>
         <module>wlhoney-web</module>
     </modules>

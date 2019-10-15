@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="wlhoney-service" />
+        <module name="wlhoney-dao" />
         <module name="wlhoney" />
         <module name="wlhoney-web" />
       </profile>
@@ -14,6 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="wlhoney-dao" options="-parameters" />
       <module name="wlhoney-service" options="-parameters" />
       <module name="wlhoney-web" options="-parameters" />
     </option>
