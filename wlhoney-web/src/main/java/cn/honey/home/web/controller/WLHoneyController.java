@@ -2,20 +2,20 @@ package cn.honey.home.web.controller;
 
 import cn.honey.home.entity.Album;
 import cn.honey.home.entity.Photo;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 public class WLHoneyController {
 
     @GetMapping("/albums")
-    public String index() {
-        Map<String, String> map = new HashMap<>();
+    public String index(Map<String, Object> map) {
+        //Map<String, Object> map = new HashMap<>();
         List<Album> albums = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
             Album album = new Album();
@@ -31,7 +31,7 @@ public class WLHoneyController {
         defaultPhoto2.setName("DSCF1023.jpg");
         album2.setDefaultPhoto(defaultPhoto2);
         albums.add(album2);
-
+        map.put("albums", albums);
         return "albums";
     }
 }
