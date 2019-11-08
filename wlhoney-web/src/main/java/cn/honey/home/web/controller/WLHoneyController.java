@@ -15,9 +15,8 @@ public class WLHoneyController {
 
     @GetMapping("/albums")
     public String index(Map<String, Object> map) {
-        //Map<String, Object> map = new HashMap<>();
         List<Album> albums = new ArrayList<>();
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 11; i++) {
             Album album = new Album();
             album.setAlbumName("天津");
             Photo defaultPhoto = new Photo();

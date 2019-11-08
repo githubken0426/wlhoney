@@ -18,31 +18,32 @@
 
 <header>
     <div class="header-inner">
-        <div class="logo">
-            <a href="javascript:void(0)"><span></span>WLHoney</a>
+        <div class="logo" th:onclick=""
+             th:style="'background-image: url('+@{'/files/sys-timebox.png'}+');background-size:cover;'">
         </div>
-        <nav class="header-navigation">
-            <li><a href="javascript:void(0)"><span>Login</span></a></li>
-        </nav>
+        <div class="logo" th:onclick=""
+             th:style="'background-image: url('+@{'/files/sys-photo.png'}+');background-size:cover;'">
+        </div>
+        <!--<nav class="header-navigation"
+             th:style="'background-image: url('+@{'/files/sys-photo.png'}+');background-size:cover;cursor:pointer;'">
+        </nav>-->
     </div>
 </header>
-<!-- coidea:header END -->
 
-<!-- slideshow START -->
 <section class="slideshow">
     <ul class="navigation">
-        <li class="navigation-item active" th:each="obj,state : ${albums} ">
+        <li th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'navigation-item active':'navigation-item'">
             <span class="rotate-holder"></span>
-            <span class="background-holder" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></span>
+            <span class="background-holder"
+                  th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></span>
         </li>
     </ul>
 
     <div class="detail">
-        <div class="detail-item active" th:each="obj,state : ${albums} ">
+        <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
             <div class="headline" th:text="${obj.albumName}"></div>
             <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></div>
         </div>
-
     </div>
 
 </section>

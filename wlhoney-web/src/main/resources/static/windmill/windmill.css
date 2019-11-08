@@ -112,11 +112,13 @@ body header .header-inner {
 }
 
 body header .header-inner .logo {
+    cursor:pointer;
     position: relative;
     display: inline;
-    width: auto;
-    height: auto;
-    float: left;
+    width: 45px;
+    height: 45px;
+    float: right;
+    margin-left:10px;
 }
 
 body header .header-inner .logo a {
@@ -147,6 +149,8 @@ body header .header-inner nav {
     padding: 0;
     list-type-style: none;
     float: right;
+    width: 45px;
+    height: 45px;
 }
 
 body header .header-inner nav li {
@@ -232,8 +236,8 @@ body section.slideshow ul.navigation li.navigation-item {
     position: absolute;
     display: inline-block;
     overflow: hidden;
-    width: 120px;
-    height: 120px;
+    width: 92px;
+    height: 92px;
     padding: 10px;
     text-align: center;
     cursor: pointer;
@@ -243,15 +247,15 @@ body section.slideshow ul.navigation li.navigation-item {
 
 @media screen and (max-width: 992px) {
     body section.slideshow ul.navigation li.navigation-item {
-        width: 92px;
-        height: 92px;
+        width: 62px;
+        height: 62px;
     }
 }
 
 @media screen and (max-width: 768px) {
     body section.slideshow ul.navigation li.navigation-item {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
     }
 }
 
