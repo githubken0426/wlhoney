@@ -34,15 +34,14 @@
 <!-- slideshow START -->
 <section class="slideshow">
     <ul class="navigation">
-        <li class="navigation-item active">
+        <li class="navigation-item active"  th:each="obj,state : ${orderList} ">
             <span class="rotate-holder"></span>
             <span class="background-holder" style="background-image: url(assets/img/img-1.jpeg);"></span>
         </li>
     </ul>
 
     <div class="detail">
-        <!-- slideshow:details START -->
-        <div class="detail-item active">
+        <div class="detail-item active"  th:each="obj,state : ${orderList} ">
             <div class="headline">Amsterdam</div>
             <div class="background" style="background-image: url(assets/img/img-1.jpeg)"></div>
         </div>
