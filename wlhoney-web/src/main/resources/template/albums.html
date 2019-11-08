@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WLHoney</title>
+    <title>WLHoney Albums</title>
     <link rel="stylesheet" type="text/css" th:href="@{/windmill/windmill.css}"/>
 </head>
 <body>
-<!-- coidea:loader START -->
 <div class="loader">
     <div class="lds-ripple">
         <div></div>
         <div></div>
     </div>
 </div>
-<!-- coidea:loader END -->
 
-<!-- coidea:header START -->
 <header>
     <div class="header-inner">
         <div class="logo">
@@ -34,16 +31,16 @@
 <!-- slideshow START -->
 <section class="slideshow">
     <ul class="navigation">
-        <li class="navigation-item active"  th:each="obj,state : ${orderList} ">
+        <li class="navigation-item active" th:each="obj,state : ${albums} ">
             <span class="rotate-holder"></span>
-            <span class="background-holder" style="background-image: url(assets/img/img-1.jpeg);"></span>
+            <span class="background-holder" th:style="'background-image: url('+${obj.defaultPhoto.name}+')'"></span>
         </li>
     </ul>
 
     <div class="detail">
-        <div class="detail-item active"  th:each="obj,state : ${orderList} ">
-            <div class="headline">Amsterdam</div>
-            <div class="background" style="background-image: url(assets/img/img-1.jpeg)"></div>
+        <div class="detail-item active" th:each="obj,state : ${albums} ">
+            <div class="headline" th:text="${obj.albumName}"></div>
+            <div class="background" th:style="'background-image: url('+${obj.defaultPhoto.name}+')'"></div>
         </div>
 
     </div>

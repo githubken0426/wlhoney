@@ -1,18 +1,37 @@
 package cn.honey.home.web.controller;
 
+import cn.honey.home.entity.Album;
+import cn.honey.home.entity.Photo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class WLHoneyController {
 
-    @GetMapping("/index")
+    @GetMapping("/albums")
     public String index() {
         Map<String, String> map = new HashMap<>();
+        List<Album> albums = new ArrayList<>();
+        for (int i = 0; i < 13; i++) {
+            Album album = new Album();
+            album.setAlbumName("天津");
+            Photo defaultPhoto = new Photo();
+            defaultPhoto.setName("defaultImage.jpeg");
+            album.setDefaultPhoto(defaultPhoto);
+            albums.add(album);
+        }
+        Album album2 = new Album();
+        album2.setAlbumName("北京");
+        Photo defaultPhoto2 = new Photo();
+        defaultPhoto2.setName("DSCF1023.jpg");
+        album2.setDefaultPhoto(defaultPhoto2);
+        albums.add(album2);
 
-        return "index";
+        return "albums";
     }
 }
