@@ -33,14 +33,14 @@
     <ul class="navigation">
         <li class="navigation-item active" th:each="obj,state : ${albums} ">
             <span class="rotate-holder"></span>
-            <span class="background-holder" th:style="'background-image: url('+${obj.defaultPhoto.name}+')'"></span>
+            <span class="background-holder" th:style="'background-image: url(/files/'+${obj.defaultPhoto.name}+')'"></span>
         </li>
     </ul>
 
     <div class="detail">
         <div class="detail-item active" th:each="obj,state : ${albums} ">
             <div class="headline" th:text="${obj.albumName}"></div>
-            <div class="background" th:style="'background-image: url('+${obj.defaultPhoto.name}+')'"></div>
+            <div class="background" th:style="'background-image: url(/files/'+${obj.defaultPhoto.name}+')'"></div>
         </div>
 
     </div>
