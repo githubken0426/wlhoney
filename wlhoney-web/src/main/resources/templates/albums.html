@@ -82,7 +82,8 @@
 <script type="text/javascript" th:src="@{/wlhoney.js}"></script>
 <script type="text/javascript">
     function review(albumId){
-        alert(albumId);
+        let contextPath = $("#contextPath").attr("href");
+        window.location.href = contextPath + "/" + albumId + "/photos";
     }
 </script>
 </body>

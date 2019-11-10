@@ -1,75 +1,103 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" style="height:100%;">
 <head>
-  <meta charset="utf-8">
-  <title>WLHONEY ALBUMS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <link rel="stylesheet" type="text/css" th:href="@{/swiper/swiper.min.css}"/>
+    <meta charset="utf-8">
+    <title>WlHoney Photos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/swiper/swiper.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/mobiscroll/css/mobiscroll.custom-3.0.0-beta6.min.css}"/>
 
-  <style>
-    body {
-      background: #fff;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color:#000;
-      margin: 0;
-      padding: 0;
-    }
-    .swiper-container {
-      width: 100%;
-      padding-top: 50px;
-      padding-bottom: 50px;
-    }
-    .swiper-slide {
-      background-position: center;
-      background-size: cover;
-      width: 300px;
-      height: 300px;
+    <style>
+        body {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
 
-    }
-  </style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+
+        }
+
+        .db {
+            height: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
-<body>
-  <!-- Swiper -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-6.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-7.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-8.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-9.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg0)"></div>
+<body style="height:100%;">
+<div th:style="'background-image: url('+@{'/files/'+${defaultPhoto.name}}+')'" class="db">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" th:each="obj,state : ${photos}"
+                 th:style="'background-image: url('+@{'/files/'+${obj.name}}+')'"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
-
-  <!-- Swiper JS -->
-  <script src="../package/js/swiper.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
+    <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
+        <label class="mbsc-segmented-item" th:onclick="home()">
+            <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
+            </span>
+        </label>
+        <label class="mbsc-segmented-item" th:onclick="upload()">
+            <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
+            </span>
+        </label>
+        <label class="mbsc-segmented-item" th:onclick="search()">
+            <input id="datetimeDate-demo" type="radio" data-role="segmented" data-icon="cogs" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content" style="border-right:0;">
+                <span class="mbsc-ic mbsc-ic-cogs"></span>
+            </span>
+        </label>
+    </div>
+</div>
+<a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
+<script type="text/javascript" th:src="@{/jQuery/jquery-1.11.0.min.js}"></script>
+<script type="text/javascript" th:src="@{/mobiscroll/js/mobiscroll.custom-3.0.0-beta6.js}"></script>
+<script type="text/javascript" th:src="@{/swiper/swiper.min.js}"></script>
+<script type="text/javascript" th:src="@{/wlhoney.js}"></script>
+<!-- Initialize Swiper -->
+<script>
     var swiper = new Swiper('.swiper-container', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows : true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
     });
-  </script>
+</script>
 </body>
 </html>

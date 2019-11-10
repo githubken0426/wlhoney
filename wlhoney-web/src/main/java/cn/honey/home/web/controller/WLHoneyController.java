@@ -4,6 +4,7 @@ import cn.honey.home.entity.Album;
 import cn.honey.home.entity.Photo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,8 +40,21 @@ public class WLHoneyController {
         return "albums";
     }
 
-    @GetMapping("/photos")
-    public String photos(Map<String, Object> map) {
-        return "redirect:/albums";
+    @GetMapping("/{albumId}/photos")
+    public String photos(@PathVariable("albumId") int albumId, Map<String, Object> map) {
+        List<Photo> photos = new ArrayList<>();
+        Photo defaultPhoto = new Photo();
+        defaultPhoto.setName("bodyImage.jpg");
+        Photo defaultPhoto2 = new Photo();
+        defaultPhoto2.setName("xiaozhao.jpg");
+        Photo defaultPhoto3 = new Photo();
+        defaultPhoto3.setName("wlhoney.jpg");
+
+        photos.add(defaultPhoto);
+        photos.add(defaultPhoto2);
+        photos.add(defaultPhoto3);
+        map.put("photos", photos);
+        map.put("defaultPhoto", defaultPhoto);
+        return "photo-coverflow";
     }
 }
