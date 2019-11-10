@@ -3,12 +3,21 @@ package cn.honey.home.entity;
 import java.util.Date;
 
 public class Album {
+    private int id;
     private String albumName;
     private String description;
     private Date createTime;
     private Date modifyTime;
     private int flag;
     private Photo defaultPhoto;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getAlbumName() {
         return albumName;

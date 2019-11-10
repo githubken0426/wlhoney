@@ -2,8 +2,8 @@ function home(){
     let contextPath = $("#contextPath").attr("href");
     window.location.href = contextPath + "/albums";
 }
-function review(){
-    alert("浏览相片");
+function upload(){
+    alert("upload相片");
 }
 function search(){
     alert("按照年搜索");

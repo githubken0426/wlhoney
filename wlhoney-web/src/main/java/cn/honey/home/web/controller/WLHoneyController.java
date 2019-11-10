@@ -22,6 +22,7 @@ public class WLHoneyController {
         List<Album> albums = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             Album album = new Album();
+            album.setId(i);
             album.setAlbumName(i + 1 + "月");
             Photo defaultPhoto = new Photo();
             defaultPhoto.setName("defaultImage.jpeg");
@@ -36,5 +37,10 @@ public class WLHoneyController {
         albums.add(album2);
         map.put("albums", albums);
         return "albums";
+    }
+
+    @GetMapping("/photos")
+    public String photos(Map<String, Object> map) {
+        return "redirect:/albums";
     }
 }

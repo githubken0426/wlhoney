@@ -46,7 +46,7 @@
     <div class="detail">
         <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
             <div class="headline" th:text="${obj.albumName}"></div>
-            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></div>
+            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'" th:onclick="'review('+${obj.id}+')'"></div>
         </div>
     </div>
     <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
@@ -56,7 +56,7 @@
                 <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
             </span>
         </label>
-        <label class="mbsc-segmented-item" th:onclick="review()">
+        <label class="mbsc-segmented-item" th:onclick="upload()">
             <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
@@ -80,6 +80,10 @@
 <script type="text/javascript" th:src="@{/mobiscroll/js/mobiscroll.custom-3.0.0-beta6.js}"></script>
 <a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript" th:src="@{/wlhoney.js}"></script>
-
+<script type="text/javascript">
+    function review(albumId){
+        alert(albumId);
+    }
+</script>
 </body>
 </html>
