@@ -12,13 +12,17 @@ import java.util.Map;
 
 @Controller
 public class WLHoneyController {
+    @GetMapping("/")
+    public String index(Map<String, Object> map) {
+        return "redirect:/albums";
+    }
 
     @GetMapping("/albums")
-    public String index(Map<String, Object> map) {
+    public String albums(Map<String, Object> map) {
         List<Album> albums = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             Album album = new Album();
-            album.setAlbumName(i+1+"月");
+            album.setAlbumName(i + 1 + "月");
             Photo defaultPhoto = new Photo();
             defaultPhoto.setName("defaultImage.jpeg");
             album.setDefaultPhoto(defaultPhoto);
