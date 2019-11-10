@@ -31,7 +31,9 @@
         </nav>&ndash;&gt;
     </div>
 </header>-->
-
+<div style="position: absolute; top: 50%;z-index: 999999; color: white;left: 10px;">
+    <span>2019</span>
+</div>
 <section class="slideshow">
     <ul class="navigation">
         <li th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'navigation-item active':'navigation-item'">
@@ -47,8 +49,28 @@
             <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></div>
         </div>
     </div>
-
+    <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
+        <label class="mbsc-segmented-item" th:onclick="home()">
+            <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
+            </span>
+        </label>
+        <label class="mbsc-segmented-item" th:onclick="review()">
+            <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
+            </span>
+        </label>
+        <label class="mbsc-segmented-item" th:onclick="search()">
+            <input type="radio" data-role="segmented" data-icon="cogs" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <span class="mbsc-segmented-content" style="border-right:0;">
+                <span class="mbsc-ic mbsc-ic-cogs"></span>
+            </span>
+        </label>
+    </div>
 </section>
+
 <!-- slideshow END -->
 <script type="text/javascript" th:src="@{/jQuery/jquery-1.11.0.min.js}"></script>
 <script type="text/javascript" th:src="@{/windmill/imagesloaded.pkgd.min.js}"></script>
@@ -57,5 +79,16 @@
 <script type="text/javascript" th:src="@{/gsap/TextPlugin.min.js}"></script>
 <script type="text/javascript" th:src="@{/windmill/windmill.js}"></script>
 <script type="text/javascript" th:src="@{/mobiscroll/js/mobiscroll.custom-3.0.0-beta6.js}"></script>
+<script type="text/javascript">
+    function home(){
+        alert("返回到相册首页");
+    }
+    function review(){
+        alert("浏览相片");
+    }
+    function search(){
+        alert("按照年搜索");
+    }
+</script>
 </body>
 </html>

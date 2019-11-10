@@ -18,7 +18,7 @@ public class WLHoneyController {
         List<Album> albums = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             Album album = new Album();
-            album.setAlbumName("天津");
+            album.setAlbumName(i+1+"月");
             Photo defaultPhoto = new Photo();
             defaultPhoto.setName("defaultImage.jpeg");
             album.setDefaultPhoto(defaultPhoto);

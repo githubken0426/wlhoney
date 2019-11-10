@@ -11470,12 +11470,11 @@
 }
 
 .mbsc-material .mbsc-segmented-content {
-    height: 2.2857145em;
+    height: 4.2857145em;
     margin: 0 -.07142857em;
-    line-height: 2.2857145em;
+    line-height: 4.2857145em;
     padding: 0 .428571em;
-    border: .142857em solid #009688;
-    color: #000;
+    color: whitesmoke;
     text-transform: capitalize;
     -webkit-backface-visibility: hidden
 }
