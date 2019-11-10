@@ -5,9 +5,6 @@ function home(){
 function upload(){
     alert("upload相片");
 }
-function search(){
-    alert("按照年搜索");
-}
 
 $(function () {
     // Mobiscroll Date & Time initialization

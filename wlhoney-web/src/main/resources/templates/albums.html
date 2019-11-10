@@ -45,7 +45,7 @@
 
     <div class="detail">
         <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
-            <div class="headline" th:text="${obj.albumName}"></div>
+            <div class="headline" th:text="${obj.albumName}" th:onclick="'review('+${obj.id}+')'"></div>
             <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'" th:onclick="'review('+${obj.id}+')'"></div>
         </div>
     </div>
