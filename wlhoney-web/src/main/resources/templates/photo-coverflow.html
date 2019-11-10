@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" style="height:100%;">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" style="height: calc(100%);">
 <head>
     <meta charset="utf-8">
     <title>WlHoney Photos</title>
@@ -16,31 +16,32 @@
             color: #000;
             margin: 0;
             padding: 0;
+            height: calc(100%);
         }
 
         .swiper-container {
             width: 100%;
-            padding-top: 50px;
+            position: relative;
+            top: calc(25%);
             padding-bottom: 50px;
         }
 
         .swiper-slide {
             background-position: center;
             background-size: cover;
-            width: 300px;
-            height: 300px;
+            width: calc(300px);
+            height: calc(400px);
 
         }
 
         .db {
-            height: 100%;
-            height: 100%;
+            height: calc(100%);
             background-size: cover;
             background-repeat: no-repeat;
         }
     </style>
 </head>
-<body style="height:100%;">
+<body>
 <div th:style="'background-image: url('+@{'/files/'+${defaultPhoto.name}}+')'" class="db">
     <!-- Swiper -->
     <div class="swiper-container">
