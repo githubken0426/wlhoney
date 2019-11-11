@@ -2,6 +2,7 @@ package cn.honey.home.web.controller;
 
 import cn.honey.home.entity.Album;
 import cn.honey.home.entity.Photo;
+import cn.honey.home.web.enumration.ViewEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ public class WLHoneyController {
         album2.setDefaultPhoto(defaultPhoto2);
         albums.add(album2);
         map.put("albums", albums);
-        return "albums";
+        return ViewEnum.ALBUMS.view();
     }
 
     @GetMapping("/{albumId}/photos")
@@ -55,6 +56,6 @@ public class WLHoneyController {
         photos.add(defaultPhoto3);
         map.put("photos", photos);
         map.put("defaultPhoto", defaultPhoto);
-        return "photo-coverflow";
+        return ViewEnum.PHOTO_CONVERFLOW.view();
     }
 }
