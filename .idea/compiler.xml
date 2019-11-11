@@ -8,13 +8,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="wlhoney-dao" />
         <module name="wlhoney-service" />
+        <module name="wlhoney-album" />
         <module name="wlhoney-web" />
+        <module name="wlhoney-photo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wlhoney-service" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="wlhoney-dao" options="" />
+      <module name="wlhoney-album" options="-parameters" />
+      <module name="wlhoney-dao" options="-parameters" />
+      <module name="wlhoney-photo" options="-parameters" />
       <module name="wlhoney-service" options="-parameters" />
       <module name="wlhoney-web" options="-parameters" />
     </option>
