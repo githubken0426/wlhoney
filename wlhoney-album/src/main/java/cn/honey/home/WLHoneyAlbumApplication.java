@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class WLHoneyServiceApplication {
+public class WLHoneyAlbumApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WLHoneyServiceApplication.class, args);
+        SpringApplication.run(WLHoneyAlbumApplication.class, args);
     }
 
 }

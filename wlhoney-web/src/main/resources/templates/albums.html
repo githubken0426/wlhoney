@@ -50,19 +50,19 @@
         </div>
     </div>
     <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
-        <label class="mbsc-segmented-item" th:onclick="home()">
+        <label class="mbsc-segmented-item" onclick="home()">
             <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
             </span>
         </label>
-        <label class="mbsc-segmented-item" th:onclick="upload()">
+        <label class="mbsc-segmented-item" onclick="upload()">
             <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
             </span>
         </label>
-        <label class="mbsc-segmented-item" th:onclick="search()">
+        <label class="mbsc-segmented-item">
             <input id="datetimeDate-demo" type="radio" data-role="segmented" data-icon="cogs" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content" style="border-right:0;">
                 <span class="mbsc-ic mbsc-ic-cogs"></span>
@@ -78,8 +78,8 @@
 <script type="text/javascript" th:src="@{/gsap/TextPlugin.min.js}"></script>
 <script type="text/javascript" th:src="@{/windmill/windmill.js}"></script>
 <script type="text/javascript" th:src="@{/mobiscroll/js/mobiscroll.custom-3.0.0-beta6.js}"></script>
-<a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript" th:src="@{/wlhoney.js}"></script>
+<a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript">
     function review(albumId){
         let contextPath = $("#contextPath").attr("href");

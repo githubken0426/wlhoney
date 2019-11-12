@@ -10,7 +10,7 @@
     <groupId>cn.honey.home</groupId>
     <artifactId>wlhoney-album</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wlhoney-service</name>
+    <name>wlhoney-album</name>
     <description>Demo project for Spring Boot</description>
 
 

@@ -7,7 +7,7 @@ function upload(){
 }
 
 $(function () {
-    // Mobiscroll Date & Time initialization
+    // Mobiscroll Date &amp; Time initialization
     $('#datetimeDate-demo').mobiscroll().date({
         animate: "flip",
         theme: 'wp', // Specify theme like: theme: 'ios' or omit setting to use default
