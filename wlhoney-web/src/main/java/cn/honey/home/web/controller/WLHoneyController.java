@@ -8,16 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class WLHoneyController {
-    @GetMapping("/")
-    public String index(Map<String, Object> map) {
-        return "redirect:/albums";
-    }
 
     @GetMapping("/albums")
     public String albums(Map<String, Object> map) {

@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-//@EnableEurekaServer
+@EnableEurekaServer
 public class WLHoneyWebApplication  extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

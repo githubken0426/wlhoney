@@ -13,17 +13,10 @@
     <name>wlhoney-album</name>
     <description>Demo project for Spring Boot</description>
 
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
         <dependency>
             <groupId>cn.wlhoney.home</groupId>
             <artifactId>wlhoney-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
