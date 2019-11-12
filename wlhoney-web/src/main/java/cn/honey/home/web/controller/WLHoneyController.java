@@ -22,7 +22,7 @@ public class WLHoneyController {
     @GetMapping("/albums")
     public String albums(Map<String, Object> map) {
         List<Album> albums = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             Album album = new Album();
             album.setId(i);
             album.setAlbumName(i + 1 + "月");
@@ -37,6 +37,13 @@ public class WLHoneyController {
         defaultPhoto2.setName("DSCF1023.jpg");
         album2.setDefaultPhoto(defaultPhoto2);
         albums.add(album2);
+
+        Album album3 = new Album();
+        album3.setAlbumName("北京");
+        Photo defaultPhoto3 = new Photo();
+        defaultPhoto3.setName("bodyImage.jpg");
+        album3.setDefaultPhoto(defaultPhoto3);
+        albums.add(album3);
         map.put("albums", albums);
         return ViewEnum.ALBUMS.view();
     }

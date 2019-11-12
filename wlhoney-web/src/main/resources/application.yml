@@ -49,5 +49,5 @@ global:
   pageSize: 10
   successOperation: 操作成功
   errorOperation: 操作失败
-  fileUploadPath: G:/WorkSpace/photos/
+  fileUploadPath: C:\WorkSpace\photos
   fileRequestUrl: /files/**
