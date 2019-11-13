@@ -13,6 +13,10 @@ import java.util.Map;
 
 @Controller
 public class WLHoneyController {
+    @GetMapping("/")
+    public String index(Map<String, Object> map) {
+        return "redirect:/albums";
+    }
 
     @GetMapping("/albums")
     public String albums(Map<String, Object> map) {
