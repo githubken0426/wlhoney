@@ -7,6 +7,7 @@
         <artifactId>wlhoney</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <groupId>cn.honey.home</groupId>
     <artifactId>wlhoney-photo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -15,12 +16,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-        <dependency>
             <groupId>cn.wlhoney.home</groupId>
             <artifactId>wlhoney-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
 
