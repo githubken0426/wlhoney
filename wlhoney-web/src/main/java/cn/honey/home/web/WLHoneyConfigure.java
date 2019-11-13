@@ -1,9 +1,9 @@
 package cn.honey.home.web;
 
-import com.alibaba.druid.support.spring.mvc.StatHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 
 @Configuration
 public class WLHoneyConfigure implements WebMvcConfigurer {
@@ -26,7 +26,7 @@ public class WLHoneyConfigure implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new StatHandlerInterceptor())
+        registry.addInterceptor(new ThemeChangeInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**", "/gasp/**", "/windmill/**",
                         "/jQuery/**", "/layer/**", "/swiper/**", "/files/**");

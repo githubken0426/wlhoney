@@ -8,24 +8,3 @@ spring:
       enabled: true
       max-file-size: 50MB
       max-request-size: 100MB
-  datasource:
-    name: test
-    url: jdbc:mysql://47.110.153.104:3306/enjoy_life?serverTimezone=Asia/Shanghai
-    #url: jdbc:mysql://localhost:3306/enjoy_life?serverTimezone=Asia/Shanghai
-    username: root
-    password: root
-    # ??druid???
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name:  com.mysql.cj.jdbc.Driver
-    filters: stat
-    maxActive: 20
-    initialSize: 1
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 3600000
-    validationQuery: select 1
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
