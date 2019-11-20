@@ -1,10 +1,25 @@
 server:
   port: 8183
-  servlet:
-    context-path: /wlhoney-album
+
 spring:
   servlet:
     multipart:
       enabled: true
       max-file-size: 50MB
       max-request-size: 100MB
+  profiles: wlhoney-album
+
+eureka:
+  instance:
+    hostname: wlhoney-album
+    appname: wlhoney-album
+    prefer-ip-address: true
+    client:
+      healthcheck:
+        enabled: true
+      service-url:
+        defaultZone: http://wlhoney-photo:8182/eureka
+
+info:
+  app:
+    name: wlhoney-album
