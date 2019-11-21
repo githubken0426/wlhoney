@@ -17,7 +17,7 @@ eureka:
       healthcheck:
         enabled: true
       service-url:
-        defaultZone: http://admin:admin@wlhoney-album:8183/eureka
+        defaultZone: http://admin:admin@wlhoney-album:8183
 
 info:
   app:
