@@ -8,14 +8,10 @@ spring:
 eureka:
   instance:
     hostname: wlhoney-server-first
-    appname: wlhoney-server-first
+    appname: wlhoney-server
     prefer-ip-address: false
   client:
     healthcheck:
       enabled: true
     service-url:
       defaultZone: http://wlhoney-server-second:8082
-
-info:
-  app:
-    name: wlhoney-server-first

@@ -1,21 +1,14 @@
 server:
   port: 8082
 
-spring:
-  application:
-    name: wlhoney-server
-
+#spring cloud eureka优先使用spring.application.name值来覆盖eureka.instance.appname的值
 eureka:
   instance:
     hostname: wlhoney-server-second
-    appname: wlhoney-server-second
+    appname: wlhoney-server
     prefer-ip-address: false
   client:
     healthcheck:
       enabled: true
     service-url:
       defaultZone: http://wlhoney-server-first:8081
-
-info:
-  app:
-    name: wlhoney-server-second
