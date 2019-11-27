@@ -5,9 +5,9 @@ eureka:
   instance:
     hostname: wlhoney-server-first
     appname: wlhoney-server
-    prefer-ip-address: false
+    preferIpAddress: false
   client:
     healthcheck:
       enabled: true
-    service-url:
-      defaultZone: http://wlhoney-server-second:8082
+    serviceUrl:
+      defaultZone: http://wlhoney-server-second:8082/
