@@ -12,6 +12,8 @@
         <module>wlhoney-dao</module>
         <module>wlhoney-album</module>
         <module>wlhoney-photo</module>
+        <module>wlhoney-server-first</module>
+        <module>wlhoney-server-second</module>
         <module>wlhoney-web</module>
     </modules>
 

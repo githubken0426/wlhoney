@@ -3,14 +3,14 @@ package cn.honey.home;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@EnableEurekaServer
-public class WLHoneyPhotoApplication {
+@EnableEurekaClient
+public class WLHoneyClientAlbum {
 
     public static void main(String[] args) {
-        SpringApplication.run(WLHoneyPhotoApplication.class, args);
+        SpringApplication.run(WLHoneyClientAlbum.class, args);
     }
 
 }

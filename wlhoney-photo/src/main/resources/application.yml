@@ -1,5 +1,5 @@
 server:
-  port: 8182
+  port: 8181
 
 spring:
   servlet:
@@ -7,17 +7,22 @@ spring:
       enabled: true
       max-file-size: 50MB
       max-request-size: 100MB
+  application:
+    name: wlhoney-photo
 
 eureka:
   instance:
     hostname: wlhoney-photo
     appname: wlhoney-photo
-    prefer-ip-address: true
-    client:
-      healthcheck:
-        enabled: true
-      service-url:
-        defaultZone: http://admin:admin@wlhoney-album:8183
+    prefer-ip-address: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka-server:eureka-server@wlhoney-server-first:8081,http://eureka-server:eureka-server@wlhoney-server-second:8082
+
 
 info:
   app:
