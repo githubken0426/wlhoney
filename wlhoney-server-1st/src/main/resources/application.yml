@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+eureka:
+  instance:
+    hostname: wlhoney-server-1st
+    appname: wlhoney-server
+    preferIpAddress: true
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://wlhoney-server-2nd:8082/

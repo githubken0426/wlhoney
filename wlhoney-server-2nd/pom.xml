@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>cn.honey.home</groupId>
-    <artifactId>wlhoney-server-second</artifactId>
+    <artifactId>wlhoney-server-2nd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wlhoney-server-second</name>
+    <name>wlhoney-server-2nd</name>
     <description>eureka server 2</description>
 
     <dependencies>
