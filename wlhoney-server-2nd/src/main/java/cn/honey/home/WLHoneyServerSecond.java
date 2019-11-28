@@ -7,10 +7,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableEurekaServer
-public class WLHoneyServerSec {
+public class WLHoneyServerSecond {
 
     public static void main(String[] args) {
-        SpringApplication.run(WLHoneyServerSec.class, args);
+        SpringApplication.run(WLHoneyServerSecond.class, args);
     }
 
 }
