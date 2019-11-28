@@ -14,13 +14,12 @@ eureka:
   instance:
     hostname: wlhoney-photo
     appname: wlhoney-photo
-    preferIpAddress: false
+    prefer-ip-address: true
   client:
     healthcheck:
       enabled: true
-    serviceUrl:
-      defaultZone: http://eureka-server:eureka-server@wlhoney-server-first:8081/eureka/
-
+    service-url:
+      defaultZone: http://eureka-server:eureka-server@wlhoney-server-first:8081/eureka/,http://eureka-server:eureka-server@wlhoney-server-second:8082/eureka/
 
 info:
   app:
