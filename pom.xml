@@ -15,6 +15,7 @@
         <module>wlhoney-server-1st</module>
         <module>wlhoney-server-2nd</module>
         <module>wlhoney-web</module>
+        <module>wlhoney-conf</module>
     </modules>
 
     <properties>
