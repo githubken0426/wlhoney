@@ -1,14 +1,22 @@
 server:
   port: 8082
 
-#spring cloud eureka优先使用spring.application.name值来覆盖eureka.instance.appname的值
+info:
+  app:
+    name: @project.artifactId@
+  build:
+    artifactId: @project.artifactId@
+    version: @project.version@
+  author:
+    name: ken
+
 eureka:
-dashboard:
-  path: / #default '/'
+  dashboard:
+    path: / #default '/'
   instance:
     hostname: wlhoney-server-2nd
-    appname: wlhoney-server-2nd
-    preferIpAddress: true
+    appname: @project.artifactId@
+    preferIpAddress: false
     instance-id: ${eureka.instance.appname}:${server.port}
   client:
     healthcheck:
@@ -16,6 +24,3 @@ dashboard:
     service-url:
       defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/
 
-info:
-  app:
-    name: wlhoney-server-2nd
