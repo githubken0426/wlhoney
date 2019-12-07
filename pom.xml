@@ -10,12 +10,13 @@
 
     <modules>
         <module>wlhoney-dao</module>
-        <module>wlhoney-album</module>
-        <module>wlhoney-photo</module>
+        <module>wlhoney-produce-album</module>
+        <module>wlhoney-produce-photo</module>
         <module>wlhoney-server-1st</module>
         <module>wlhoney-server-2nd</module>
         <module>wlhoney-web</module>
         <module>wlhoney-conf</module>
+        <module>wlhoney-core</module>
     </modules>
 
     <properties>
@@ -53,6 +54,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.oracle</groupId>
                 <artifactId>ojdbc6</artifactId>
@@ -63,6 +65,27 @@
                 <groupId>cn.wlhoney.home</groupId>
                 <artifactId>wlhoney-dao</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>2.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -84,6 +107,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
         </dependency>
     </dependencies>
 

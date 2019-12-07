@@ -3,7 +3,7 @@ server:
 #spring cloud eureka优先使用spring.application.name值来覆盖eureka.instance.appname的值
 spring:
   application:
-    name: @project.artifactId@
+    name: wlhoney-server
 
 info:
   app:
@@ -18,10 +18,10 @@ eureka:
   dashboard:
     path: / #default:'/', eureka web ui访问路径
   instance:
-    hostname: wlhoney-server-1st
-    appname: @project.artifactId@
+    hostname: @project.artifactId@
+    appname: wlhoney-server
     preferIpAddress: false
-    instance-id: ${eureka.instance.appname}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     healthcheck:
       enabled: true

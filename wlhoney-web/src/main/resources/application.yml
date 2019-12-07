@@ -26,3 +26,15 @@ global:
   errorOperation: 操作失败
   fileUploadPath: C:/WorkSpace/photos/
   fileRequestUrl: /files/**
+
+eureka:
+  instance:
+    hostname: @project.artifactId@
+    appname: wlhoney-consume-ribbon
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.appname}:${server.port}
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/, http://eureka-server:eureka-server@wlhoney-server-2nd:8082/eureka/

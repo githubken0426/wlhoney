@@ -1,9 +1,14 @@
 server:
-  port: 8082
+  port: 8182
 
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 100MB
   application:
-    name: wlhoney-server
+    name: wlhoney-produce
 
 info:
   app:
@@ -15,15 +20,13 @@ info:
     name: ken
 
 eureka:
-  dashboard:
-    path: / #default '/'
   instance:
     hostname: @project.artifactId@
-    appname: wlhoney-server
-    preferIpAddress: false
+    appname: wlhoney-produce
+    prefer-ip-address: true
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/
+      defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/, http://eureka-server:eureka-server@wlhoney-server-2nd:8082/eureka/
