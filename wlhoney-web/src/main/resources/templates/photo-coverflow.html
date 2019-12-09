@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-<div th:style="'background-image: url('+@{'/files/'+${defaultPhoto.name}}+')'" class="db">
+<div th:style="'background-image: url('+@{'/files/'+${photos[0].name}}+')'" class="db">
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">

@@ -8,7 +8,7 @@ spring:
       max-file-size: 50MB
       max-request-size: 100MB
   application:
-    name: wlhoney-produce
+    name: @project.artifactId@
 
 info:
   app:
@@ -22,7 +22,7 @@ info:
 eureka:
   instance:
     hostname: @project.artifactId@
-    appname: wlhoney-produce
+    appname: @project.artifactId@
     prefer-ip-address: true
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:

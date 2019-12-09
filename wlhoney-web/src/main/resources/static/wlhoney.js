@@ -20,8 +20,8 @@ $(function () {
         min: new Date(2019, 0, 1),
         max: new Date(2025, 0, 1),
         onSet: function (event, inst) {
-            alert(inst._value);
+            let contextPath = $("#contextPath").attr("href");
+            window.location.href = contextPath + "/albums/"+inst._value;
         }
-
     });
 });

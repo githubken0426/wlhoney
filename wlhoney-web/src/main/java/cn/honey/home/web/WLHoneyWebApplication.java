@@ -19,6 +19,4 @@ public class WLHoneyWebApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(WLHoneyWebApplication.class);
     }
-
-
 }

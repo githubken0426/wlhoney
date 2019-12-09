@@ -2,8 +2,7 @@ package cn.honey.home.controller;
 
 import cn.honey.home.bean.Album;
 import cn.honey.home.bean.Photo;
-import cn.honey.home.service.AlbumsService;
-import cn.honey.home.util.JSONFormatUtils;
+import cn.honey.home.service.album.AlbumsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,9 +18,9 @@ public class AlbumsController {
     @Autowired
     private AlbumsService albumsService;
 
-    @GetMapping(value = "/{year}/albums")
+    @GetMapping(value = "/albums/{year}")
     @ResponseStatus(HttpStatus.OK)
-    public String healthCheck(@PathVariable("year") String year) {
+    public List<Album> healthCheck(@PathVariable("year") String year) {
         List<Album> albums = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Album album = new Album();
@@ -45,7 +44,6 @@ public class AlbumsController {
         defaultPhoto3.setName("bodyImage.jpg");
         album3.setDefaultPhoto(defaultPhoto3);
         albums.add(album3);
-        String result = JSONFormatUtils.format(albums);
-        return result;
+        return albums;
     }
 }

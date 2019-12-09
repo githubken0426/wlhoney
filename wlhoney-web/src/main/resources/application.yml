@@ -38,3 +38,5 @@ eureka:
       enabled: true
     service-url:
       defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/, http://eureka-server:eureka-server@wlhoney-server-2nd:8082/eureka/
+    register-with-eureka: false
+    fetch-registry: true

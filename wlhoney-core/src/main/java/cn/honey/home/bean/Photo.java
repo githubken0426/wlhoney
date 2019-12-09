@@ -57,4 +57,6 @@ public class Photo {
     public void setAlbumDefault(int albumDefault) {
         this.albumDefault = albumDefault;
     }
+
+
 }

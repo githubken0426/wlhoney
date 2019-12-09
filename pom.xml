@@ -10,8 +10,7 @@
 
     <modules>
         <module>wlhoney-dao</module>
-        <module>wlhoney-produce-album</module>
-        <module>wlhoney-produce-photo</module>
+        <module>wlhoney-produce</module>
         <module>wlhoney-server-1st</module>
         <module>wlhoney-server-2nd</module>
         <module>wlhoney-web</module>
@@ -87,6 +86,11 @@
                 <artifactId>commons-fileupload</artifactId>
                 <version>1.4</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.62</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -124,6 +128,10 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
 

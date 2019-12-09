@@ -1,4 +1,4 @@
-package cn.honey.home.service;
+package cn.honey.home.service.photo;
 
 
 import cn.honey.home.bean.Photo;
