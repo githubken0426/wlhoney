@@ -1,6 +1,6 @@
-package cn.honey.home.web.enumration;
+package cn.honey.home.enumration;
 
-public enum AlbumEnum {
+public enum AlbumNameEnum {
     JAN("January", 1),
     FEB("February", 2),
     MAR("March", 3),
@@ -14,7 +14,7 @@ public enum AlbumEnum {
     NOV("November", 11),
     DEC("December", 12);
 
-    private AlbumEnum(String album, int value) {
+    private AlbumNameEnum(String album, int value) {
         this.album = album;
         this.value = value;
     }

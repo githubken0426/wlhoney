@@ -39,14 +39,14 @@
         <li th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'navigation-item active':'navigation-item'">
             <span class="rotate-holder"></span>
             <span class="background-holder"
-                  th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'"></span>
+                  th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'"></span>
         </li>
     </ul>
 
     <div class="detail">
         <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
             <div class="headline" th:text="${obj.albumName}" th:onclick="'review('+${obj.id}+')'"></div>
-            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.defaultPhoto.name}}+')'" th:onclick="'review('+${obj.id}+')'"></div>
+            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'" th:onclick="'review('+${obj.id}+')'"></div>
         </div>
     </div>
     <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">

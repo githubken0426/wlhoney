@@ -41,7 +41,7 @@ public class WLHoneyController {
     }
 
     @GetMapping("/albums/{year}")
-    public String albums(@PathVariable("year") String year, Map<String, Object> map) {
+    public String albums(@PathVariable("year") Integer year, Map<String, Object> map) {
         Application serverApplication = eurekaClient.getApplication("WLHONEY-SERVER");
         logger.info("Eureka Server Application instance: {}", serverApplication.getName());
         Application application = eurekaClient.getApplication("WLHONEY-PRODUCE");

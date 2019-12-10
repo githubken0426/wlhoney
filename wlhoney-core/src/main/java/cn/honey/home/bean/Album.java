@@ -14,10 +14,12 @@ public class Album extends AbstractBean {
     private long id;
     @Column(name = "album_name")
     private String albumName;
+    @Column(name = "album_photo")
+    private String albumPhoto;
     @Column(name = "description")
     private String description;
     @Column(name = "flag")
-    private int flag;
+    private String flag;
     @OneToMany(mappedBy = "album", fetch = FetchType.EAGER)
     private Set<Photo> photos;
 
@@ -37,6 +39,14 @@ public class Album extends AbstractBean {
         this.albumName = albumName;
     }
 
+    public String getAlbumPhoto() {
+        return albumPhoto;
+    }
+
+    public void setAlbumPhoto(String albumPhoto) {
+        this.albumPhoto = albumPhoto;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -45,11 +55,11 @@ public class Album extends AbstractBean {
         this.description = description;
     }
 
-    public int getFlag() {
+    public String getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag) {
+    public void setFlag(String flag) {
         this.flag = flag;
     }
 

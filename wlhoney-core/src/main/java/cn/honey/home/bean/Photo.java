@@ -19,9 +19,7 @@ public class Photo extends AbstractBean {
     @Column(name = "description")
     private String description;
     @Column(name = "flag")
-    private int flag;
-    @Column(name = "albumDefault")
-    private int albumDefault;
+    private String flag;
 
     public long getId() {
         return id;
@@ -55,21 +53,11 @@ public class Photo extends AbstractBean {
         this.description = description;
     }
 
-    public int getFlag() {
+    public String getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag) {
+    public void setFlag(String flag) {
         this.flag = flag;
     }
-
-    public int getAlbumDefault() {
-        return albumDefault;
-    }
-
-    public void setAlbumDefault(int albumDefault) {
-        this.albumDefault = albumDefault;
-    }
-
-
 }

@@ -6,9 +6,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableFeignClients
+//@EnableFeignClients
 @EnableEurekaClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class WLHoneyWebApplication extends SpringBootServletInitializer {

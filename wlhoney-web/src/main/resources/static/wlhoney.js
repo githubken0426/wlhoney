@@ -3,7 +3,7 @@ function home(){
     window.location.href = contextPath + "/";
 }
 function upload(){
-    alert("upload相片");
+
 }
 
 $(function () {
@@ -17,7 +17,7 @@ $(function () {
         height: 65,
         closeOnOverlayTap: true,
         dateFormat: 'yy-mm',
-        min: new Date(2019, 0, 1),
+        min: new Date(2015, 0, 1),
         max: new Date(2025, 0, 1),
         onSet: function (event, inst) {
             let contextPath = $("#contextPath").attr("href");
