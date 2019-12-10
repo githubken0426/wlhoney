@@ -37,8 +37,9 @@ public class WLHoneyConfigure implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new ThemeChangeInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/css/**", "/gasp/**", "/windmill/**",
-                        "/jQuery/**", "/layer/**", "/swiper/**", "/files/**");
+                .excludePathPatterns("/bootstrap/**", "/css/**", "/gasp/**", "/mobiscroll/**",
+                        "/windmill/**", "/jQuery/**", "/layer/**", "/swiper/**",
+                        "/files/**");
     }
 
     /**

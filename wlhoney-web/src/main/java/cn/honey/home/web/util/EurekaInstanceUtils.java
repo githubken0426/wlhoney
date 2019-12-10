@@ -9,6 +9,6 @@ public class EurekaInstanceUtils {
 
     public static String getEurekaServiceURI(Application application, String instanceId) {
         InstanceInfo instance = application.getByInstanceId(instanceId);
-        return "http://" + instance.getAppName() + ":" + instance.getPort() + File.separatorChar;
+        return "http://" + instance.getAppName() + ":" + instance.getPort() + "/";
     }
 }

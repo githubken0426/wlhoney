@@ -1,6 +1,6 @@
 function home(){
     let contextPath = $("#contextPath").attr("href");
-    window.location.href = contextPath + "/albums";
+    window.location.href = contextPath + "/";
 }
 function upload(){
     alert("upload相片");
@@ -21,7 +21,8 @@ $(function () {
         max: new Date(2025, 0, 1),
         onSet: function (event, inst) {
             let contextPath = $("#contextPath").attr("href");
-            window.location.href = contextPath + "/albums/"+inst._value;
+            let year = inst._wheelArray[0];
+            window.location.href = contextPath + "/albums/"+year;
         }
     });
 });
