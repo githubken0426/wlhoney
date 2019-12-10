@@ -1,14 +1,19 @@
 package cn.honey.home.service.album;
 
 import cn.honey.home.bean.Album;
+import cn.honey.home.dao.AlbumsDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("albumsService")
 public class AlbumsServiceImpl implements AlbumsService{
+    @Autowired
+    private AlbumsDao albumsDao;
+
     @Override
-    public List<Album> getAlbumsByYear(String year) {
-        return null;
+    public List<Album> getAlbumsByYear(Integer year) {
+        return albumsDao.getAlbumsByYear(year);
     }
 }

@@ -17,7 +17,6 @@
         <dependency>
             <groupId>cn.honey.home</groupId>
             <artifactId>wlhoney-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

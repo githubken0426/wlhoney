@@ -26,10 +26,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-feign</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>cn.honey.home</groupId>
             <artifactId>wlhoney-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
