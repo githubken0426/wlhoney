@@ -6,5 +6,6 @@ import cn.honey.home.bean.Album;
 import java.util.List;
 
 public interface AlbumsService {
-    List<Album> getAlbumsByYear(Integer year);
+    List<Album> findAlbumsByYear(Integer year);
+
 }

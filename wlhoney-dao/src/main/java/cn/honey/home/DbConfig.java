@@ -1,6 +1,6 @@
-/*
 package cn.honey.home;
 
+import cn.honey.home.util.PropertyUtils;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -27,14 +27,13 @@ public class DbConfig {
     @Qualifier("primary")
     public DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-       */
-/* dataSource.setJdbcUrl(PropertiesUtils.getString("db.jdbcUrl"));
-        dataSource.setUsername(PropertiesUtils.getString("db.username"));
-        dataSource.setPassword(PropertiesUtils.getString("db.password"));
-        dataSource.setMaximumPoolSize(PropertiesUtils.getInt("db.maxPoolSize"));
-        dataSource.setMinimumIdle(PropertiesUtils.getInt("db.minIdle"));*//*
-
+        System.out.println(PropertyUtils.getString("spring.datasource.driverClassName"));
+        dataSource.setDriverClassName(PropertyUtils.getString("spring.datasource.driverClassName"));
+        dataSource.setJdbcUrl(PropertyUtils.getString("db.jdbcUrl"));
+        dataSource.setUsername(PropertyUtils.getString("db.username"));
+        dataSource.setPassword(PropertyUtils.getString("db.password"));
+        dataSource.setMaximumPoolSize(PropertyUtils.getInt("db.maxPoolSize"));
+        dataSource.setMinimumIdle(PropertyUtils.getInt("db.minIdle"));
         dataSource.setConnectionTestQuery("SELECT 1 FROM DUAL");
         return dataSource;
     }
@@ -48,13 +47,12 @@ public class DbConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder)
             throws IllegalArgumentException {
         Map<String, String> properties = new HashMap<>();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
-
+        properties.put("hibernate.dialect", PropertyUtils.getString("spring.jpa.properties.hibernate.dialect"));
         return builder
                 .dataSource(dataSource())
-                .packages("cn.honey.home.entity")
+                .packages("cn.honey.home.bean")
                 .properties(properties)
-                .persistenceUnit("acl")
+                .persistenceUnit("wlhoney")
                 .build();
     }
 
@@ -65,4 +63,3 @@ public class DbConfig {
     }
 
 }
-*/

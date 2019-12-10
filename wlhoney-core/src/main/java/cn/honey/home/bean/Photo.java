@@ -1,14 +1,43 @@
 package cn.honey.home.bean;
 
-import java.util.Date;
+import org.hibernate.annotations.DynamicUpdate;
 
-public class Photo {
+import javax.persistence.*;
+
+@Entity
+@DynamicUpdate(true)
+@Table(name = "wl_photo")
+public class Photo extends AbstractBean {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @ManyToOne
+    @JoinColumn(name = "album_id")
+    private Album album;
+    @Column(name = "name")
     private String name;
+    @Column(name = "description")
     private String description;
-    private Date createTime;
-    private Date modifyTime;
+    @Column(name = "flag")
     private int flag;
+    @Column(name = "albumDefault")
     private int albumDefault;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
     public String getName() {
         return name;
@@ -24,22 +53,6 @@ public class Photo {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
     }
 
     public int getFlag() {

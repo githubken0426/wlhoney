@@ -1,21 +1,31 @@
 package cn.honey.home.bean;
 
-import java.util.Date;
+import org.hibernate.annotations.DynamicUpdate;
 
-public class Album {
-    private int id;
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@DynamicUpdate(true)
+@Table(name = "wl_album")
+public class Album extends AbstractBean {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "album_name")
     private String albumName;
+    @Column(name = "description")
     private String description;
-    private Date createTime;
-    private Date modifyTime;
+    @Column(name = "flag")
     private int flag;
-    private Photo defaultPhoto;
+    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER)
+    private Set<Photo> photos;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -35,22 +45,6 @@ public class Album {
         this.description = description;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
     public int getFlag() {
         return flag;
     }
@@ -59,11 +53,11 @@ public class Album {
         this.flag = flag;
     }
 
-    public Photo getDefaultPhoto() {
-        return defaultPhoto;
+    public Set<Photo> getPhotos() {
+        return photos;
     }
 
-    public void setDefaultPhoto(Photo defaultPhoto) {
-        this.defaultPhoto = defaultPhoto;
+    public void setPhotos(Set<Photo> photos) {
+        this.photos = photos;
     }
 }

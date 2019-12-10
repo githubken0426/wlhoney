@@ -12,8 +12,9 @@ import java.util.List;
 public class PhotoServiceImpl implements PhotoService {
     @Autowired
     private PhotoDao photoDao;
+
     @Override
-    public List<Photo> selectPhotosByAlbums(Integer albumId) {
-        return photoDao.selectPhotosByAlbums(albumId);
+    public List<Photo> findPhotosByAlbum(Integer albumId) {
+        return photoDao.findPhotosByAlbum(albumId);
     }
 }

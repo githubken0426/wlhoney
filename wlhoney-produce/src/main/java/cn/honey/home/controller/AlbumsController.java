@@ -28,21 +28,24 @@ public class AlbumsController {
             album.setAlbumName(i + 1 + "月");
             Photo defaultPhoto = new Photo();
             defaultPhoto.setName("defaultImage.jpeg");
-            album.setDefaultPhoto(defaultPhoto);
+            defaultPhoto.setAlbumDefault(1);
+            album.getPhotos().add(defaultPhoto);
             albums.add(album);
         }
         Album album2 = new Album();
         album2.setAlbumName("北京");
         Photo defaultPhoto2 = new Photo();
         defaultPhoto2.setName("DSCF1023.jpg");
-        album2.setDefaultPhoto(defaultPhoto2);
+        defaultPhoto2.setAlbumDefault(1);
+        album2.getPhotos().add(defaultPhoto2);
         albums.add(album2);
 
         Album album3 = new Album();
         album3.setAlbumName("北京");
         Photo defaultPhoto3 = new Photo();
         defaultPhoto3.setName("bodyImage.jpg");
-        album3.setDefaultPhoto(defaultPhoto3);
+        defaultPhoto3.setAlbumDefault(1);
+        album3.getPhotos().add(defaultPhoto3);
         albums.add(album3);
         return albums;
     }

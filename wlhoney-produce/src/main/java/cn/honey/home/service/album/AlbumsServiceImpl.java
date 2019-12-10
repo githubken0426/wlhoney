@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("albumsService")
-public class AlbumsServiceImpl implements AlbumsService{
+public class AlbumsServiceImpl implements AlbumsService {
     @Autowired
     private AlbumsDao albumsDao;
 
     @Override
-    public List<Album> getAlbumsByYear(Integer year) {
-        return albumsDao.getAlbumsByYear(year);
+    public List<Album> findAlbumsByYear(Integer year) {
+        return albumsDao.findAlbumsByYear(year);
     }
 }

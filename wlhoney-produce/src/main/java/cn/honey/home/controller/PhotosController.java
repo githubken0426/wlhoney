@@ -19,7 +19,7 @@ public class PhotosController {
 
     @GetMapping(value = "/photos/{albumsId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Photo> healthCheck(@PathVariable("albumsId") Integer albumsId) {
+    public List<Photo> healthCheck(@PathVariable("albumsId") Long albumsId) {
         List<Photo> photos =new ArrayList<>();
         Photo defaultPhoto = new Photo();
         defaultPhoto.setName("bodyImage.jpg");
