@@ -60,10 +60,8 @@ public class WLHoneyConfigure implements WebMvcConfigurer {
     @LoadBalanced
     public RestTemplate restTemplate() {
         RestTemplate template = new RestTemplate();
-        /*
-        ClientHttpRequestInterceptor interceptor = new BasicAuthenticationInterceptor("eureka-server", "eureka-server");
-        template.getInterceptors().add(interceptor);
-        */
+       /* ClientHttpRequestInterceptor interceptor = new BasicAuthenticationInterceptor("eureka-server", "eureka-server");
+        template.getInterceptors().add(interceptor);*/
         template.getMessageConverters().clear();
         template.getMessageConverters().add(new FastJsonHttpMessageConverter());
         return template;
