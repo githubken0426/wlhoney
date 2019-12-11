@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLOAD MULTIPART</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/layer/layui/css/layui.css}">
+    <script type="text/javascript" th:src="@{/layer/layui/layui.js}"></script>
+    <script type="text/javascript" th:src="@{/jQuery/jquery-1.11.0.min.js}"></script>
+    <style type="text/css">
+        .container{
+            margin: 0 auto;
+            height:300px;
+            min-width:320px;
+            max-width:760px;
+            padding-top: 30px;
+            align-items: center;
+            justify-items: center;
+        }
+        .container input{
+            -webkit-transform: rotate(1.6grad);
+            transform: rotate(-10.3grad);
+        }
+        #imageUpload{
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            width:200px;
+            height: 200px;
+            -webkit-transform: rotate(6.6deg);
+            transform: rotate(6.6deg);
+        }
+        #imageUpload i {
+            margin:0 auto;
+        }
+
+        #imageUpload img{
+            width:100%;height:100%;
+            -webkit-transform: rotate(6.6deg);
+            transform: rotate(6.6deg);
+        }
+        .uploadButton{
+            position: absolute;
+            bottom: 20px;
+            align-items: center;
+            justify-items: center;
+            display: flex;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload/single}" class="layui-form layui-form-pane" >
+        <input type="hidden" id="albumsId" th:value="${albumsId}"/>
+        <div class="layui-upload-drag" id="imageUpload" >
+            <span class="layui-badge-dot" style="position: absolute;top:0px;"></span>
+            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                <div class="layui-upload-list" id="demo2"></div>
+            </blockquote>
+            <i class="layui-icon" id="imageIcon">&#xe67c;</i>
+        </div>
+
+        <div class="uploadButton">
+            <button type="button" class="layui-btn" id="uploadButton" style="margin:0 auto;">
+                <i class="layui-icon">&#xe67c;</i>上传图片
+            </button>
+        </div>
+    </form>
+</div>
+
+<a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#imageUpload',  //绑定元素
+            url: '/upload/',  //上传接口
+            method: 'post',
+            auto: false, //选择文件后不自动上传
+            bindAction: '#uploadButton', //指向一个按钮触发上传
+            data: {id: 123},//可选项。额外的参数，如：{id: 123, abc: 'xxx'}
+            choose: function (obj) {
+                //将每次选择的文件追加到文件队列
+                var files = obj.pushFile();
+                //预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
+                obj.preview(function (index, file, result) {
+                    console.log(index); //得到文件索引
+                    console.log(file); //得到文件对象
+                    console.log(result); //得到文件base64编码，比如图片
+                    $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    //obj.resetFile(index, file, '123.jpg'); //重命名文件名，layui 2.3.0 开始新增
+
+                    //这里还可以做一些 append 文件列表 DOM 的操作
+
+                    //obj.upload(index, file); //对上传失败的单个文件重新上传，一般在某个事件中使用
+                    //delete files[index]; //删除列表中对应的文件，一般在某个事件中使用
+                });
+            },
+            done: function (res) {
+                    //上传完毕回调
+             },
+             error: function () {
+                    //请求异常回调
+                }
+            });
+    });
+</script>
+</body>
+</html>

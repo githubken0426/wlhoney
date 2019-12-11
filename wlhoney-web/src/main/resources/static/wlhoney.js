@@ -23,3 +23,15 @@ $(function () {
         }
     });
 });
+
+function footerUpload() {
+    let contextPath = $("#contextPath").attr("href");
+    layer.open({
+        scrollbar: false,
+        type: 2,
+        shade: 0.1,
+        area: ['100%', '500px'],
+        title: '上传图片',
+        content: contextPath + "/upload/multipart-page/" + $("#albumsId").val()
+    });
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" style="height: calc(100%);">
+<body>
+<div  th:fragment="footer" >
+    <label class="mbsc-segmented-item" onclick="home()">
+        <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings"
+               class="mbsc-control mbsc-control-ev" data-touch="1">
+        <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
+            </span>
+    </label>
+    <label class="mbsc-segmented-item" onclick="footerUpload()">
+        <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings"
+               class="mbsc-control mbsc-control-ev" data-touch="1">
+        <span class="mbsc-segmented-content">
+                <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
+            </span>
+    </label>
+    <label class="mbsc-segmented-item">
+        <input id="datetimeDate-demo" type="radio" data-role="segmented" data-icon="cogs" name="settings"
+               class="mbsc-control mbsc-control-ev" data-touch="1">
+        <span class="mbsc-segmented-content" style="border-right:0;">
+                <span class="mbsc-ic mbsc-ic-cogs"></span>
+            </span>
+    </label>
+</div>
+</body>
