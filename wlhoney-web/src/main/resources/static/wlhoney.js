@@ -2,9 +2,6 @@ function home(){
     let contextPath = $("#contextPath").attr("href");
     window.location.href = contextPath + "/";
 }
-function upload(){
-
-}
 
 $(function () {
     // Mobiscroll Date &amp; Time initialization

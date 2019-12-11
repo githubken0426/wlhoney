@@ -33,6 +33,7 @@
 </header>-->
 <div style="position: absolute; top: 50%;z-index: 999999; color: white;left: 10px;">
     <span th:text="${year}"></span>
+    <input type="hidden" id="albumsId" value="123"/>
 </div>
 <section class="slideshow">
     <ul class="navigation">
@@ -46,30 +47,35 @@
     <div class="detail">
         <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
             <div class="headline" th:text="${obj.albumName}" th:onclick="'review('+${obj.id}+')'"></div>
-            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'" th:onclick="'review('+${obj.id}+')'"></div>
+            <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'"
+                 th:onclick="'review('+${obj.id}+')'"></div>
         </div>
     </div>
     <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
         <label class="mbsc-segmented-item" onclick="home()">
-            <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
             </span>
         </label>
         <label class="mbsc-segmented-item" onclick="upload()">
-            <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-retweet"></span>
             </span>
         </label>
         <label class="mbsc-segmented-item">
-            <input id="datetimeDate-demo" type="radio" data-role="segmented" data-icon="cogs" name="settings" class="mbsc-control mbsc-control-ev" data-touch="1">
+            <input id="datetimeDate-demo" type="radio" data-role="segmented" data-icon="cogs" name="settings"
+                   class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content" style="border-right:0;">
                 <span class="mbsc-ic mbsc-ic-cogs"></span>
             </span>
         </label>
     </div>
 </section>
+
 <!-- slideshow END -->
 <script type="text/javascript" th:src="@{/jQuery/jquery-1.11.0.min.js}"></script>
 <script type="text/javascript" th:src="@{/windmill/imagesloaded.pkgd.min.js}"></script>
@@ -79,12 +85,32 @@
 <script type="text/javascript" th:src="@{/windmill/windmill.js}"></script>
 <script type="text/javascript" th:src="@{/mobiscroll/js/mobiscroll.custom-3.0.0-beta6.js}"></script>
 <script type="text/javascript" th:src="@{/wlhoney.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
 <a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript">
-    function review(albumId){
+    function review(albumId) {
         let contextPath = $("#contextPath").attr("href");
-        window.location.href = contextPath + "/" + albumId + "/photos";
+        window.location.href = contextPath + "/photos/" + albumId;
     }
+
+    function upload() {
+        let contextPath = $("#contextPath").attr("href");
+        layer.open({
+            scrollbar: false,
+            type: 2,
+            shade: 0.1,
+            area: ['100%', '500px'],
+            title: '相册预览图',
+            //btn: ['上传', '取消'],
+            content: contextPath + "/upload/single-page/" + $("#albumsId").val()
+           /* ,yes: function (index) {
+                let body = layer.getChildFrame('body', index);
+                body.find("#uploadForm").submit();
+                layer.close(index);
+            }*/
+        });
+    }
+
 </script>
 </body>
 </html>

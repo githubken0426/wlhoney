@@ -49,10 +49,8 @@ $('.slideshow').imagesLoaded({background: true})
 
         // do tween
         function doTween(target) {
-
             var targetIndex = navigationItem.index(target),
                 timeline = new TimelineMax();
-
             // add/remove class "active" from navigation & detail
             navigationItem.each(function () {
                 $(this).removeClass('active');
