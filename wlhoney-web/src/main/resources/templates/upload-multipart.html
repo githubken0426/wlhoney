@@ -54,7 +54,7 @@
 </head>
 <body>
 <div class="container">
-    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload/single}" class="layui-form layui-form-pane" >
+    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}" class="layui-form layui-form-pane" >
         <input type="hidden" id="albumsId" th:value="${albumsId}"/>
         <div class="layui-upload-drag" id="imageUpload" >
             <span class="layui-badge-dot" style="position: absolute;top:0px;"></span>
@@ -81,6 +81,7 @@
             elem: '#imageUpload',  //绑定元素
             url: '/upload/',  //上传接口
             method: 'post',
+            multiple: true,
             auto: false, //选择文件后不自动上传
             bindAction: '#uploadButton', //指向一个按钮触发上传
             data: {id: 123},//可选项。额外的参数，如：{id: 123, abc: 'xxx'}
