@@ -1,34 +1,63 @@
 package cn.honey.home.web.controller;
 
-import cn.honey.home.web.enumration.ViewEnum;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import cn.honey.home.bean.Album;
+import cn.honey.home.result.ApiResult;
+import cn.honey.home.web.util.EurekaInstanceUtils;
+import com.netflix.discovery.shared.Application;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Calendar;
+import java.util.UUID;
 
-@Controller
-public class UploadController {
-    private static final Logger logger = LogManager.getLogger();
-
-    @GetMapping("/upload/single-page/{albumsId}")
-    public String albumsUploadPage(@PathVariable("albumsId") Integer albumsId, Map<String, Object> map) {
-        map.put("albumsId", albumsId);
-        return ViewEnum.UPLOAD_SINGLE.view();
-    }
-
-    @GetMapping("/upload/multipart-page/{albumsId}")
-    public String photoUploadPage(@PathVariable("albumsId") Integer albumsId, Map<String, Object> map) {
-        map.put("albumsId", albumsId);
-        return ViewEnum.UPLOAD_MULTIPART.view();
-    }
+@RestController
+public class UploadController extends AbstractController {
 
     @PostMapping("/upload/{albumsId}")
-    public String upload(@PathVariable("albumsId") Integer albumsId, Map<String, Object> map) {
+    public ApiResult<Integer> upload(@PathVariable("albumsId") Integer albumsId,
+                                     @RequestParam("file") MultipartFile multiFiles) {
+        logger.info("albums id: {}", albumsId);
+        ApiResult<Integer> result = new ApiResult();
+        try {
+            Application application = eurekaClient.getApplication("WLHONEY-PRODUCE");
+            String serviceUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "album/{1}";
+            Album album = restTemplate.getForObject(serviceUrl, Album.class, albumsId);
+            Calendar calendar = Calendar.getInstance();
+            if (album != null) {
+                calendar.setTime(album.getCreateTime());
+            }
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            String filePath = global.getFileUploadPath() + year + File.separator + month + File.separator;
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
 
-        return ViewEnum.UPLOAD_MULTIPART.view();
+            String fileName = filePath + UUID.randomUUID() + ".jpg";
+            Path savePath = Paths.get(fileName);
+            byte[] bytes = multiFiles.getBytes();
+            Files.write(savePath, bytes);
+
+            result.setCode("0");
+            result.setMessage(global.getSuccessOperation());
+            result.setData(year);
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.setCode("1");
+            result.setMessage(global.getErrorOperation());
+        }
+        return result;
     }
+
 }

@@ -22,17 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class WLHoneyController {
-    private static final Logger logger = LogManager.getLogger();
-
-    @Qualifier("eurekaClient")
-    @Autowired
-    private EurekaClient eurekaClient;
-
-    @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
-    private GlobalProperties globalProperties;
+public class WLHoneyController extends AbstractController {
 
     @GetMapping("/")
     public String index() {

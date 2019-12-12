@@ -16,4 +16,9 @@ public class AlbumsServiceImpl implements AlbumsService {
     public List<Album> findAlbumsByYear(Integer year) {
         return albumsDao.findAlbumsByYear(year);
     }
+
+    @Override
+    public Album findAlbumById(long albumId) {
+        return albumsDao.findAlbumById(albumId);
+    }
 }

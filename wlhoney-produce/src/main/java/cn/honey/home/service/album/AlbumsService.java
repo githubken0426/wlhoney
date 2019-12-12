@@ -8,4 +8,5 @@ import java.util.List;
 public interface AlbumsService {
     List<Album> findAlbumsByYear(Integer year);
 
+    Album findAlbumById(long albumId);
 }
