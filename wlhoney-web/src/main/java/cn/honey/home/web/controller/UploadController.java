@@ -36,9 +36,8 @@ public class UploadController extends AbstractController {
             if (album != null) {
                 calendar.setTime(album.getCreateTime());
             }
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            String filePath = global.getFileUploadPath() + year + File.separator + month + File.separator;
+            String filePath = global.getFileUploadPath() + calendar.get(Calendar.YEAR) +
+                    File.separator + calendar.get(Calendar.MONTH) + File.separator;
             File file = new File(filePath);
             if (!file.exists()) {
                 file.mkdirs();
@@ -51,7 +50,6 @@ public class UploadController extends AbstractController {
 
             result.setCode("0");
             result.setMessage(global.getSuccessOperation());
-            result.setData(year);
         } catch (IOException e) {
             e.printStackTrace();
             result.setCode("1");
