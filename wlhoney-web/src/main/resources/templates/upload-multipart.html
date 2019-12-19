@@ -9,63 +9,59 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/layer/layui/css/layui.css}">
     <script type="text/javascript" th:src="@{/layer/layui/layui.js}"></script>
     <script type="text/javascript" th:src="@{/jQuery/jquery-1.11.0.min.js}"></script>
+    <!--<link rel="stylesheet" type="text/css" media="all" href="C:\WorkSpace\wlhoney\wlhoney-web\src\main\resources\static\layer\layui\css\layui.css">
+    <script type="text/javascript" src="C:\WorkSpace\wlhoney\wlhoney-web\src\main\resources\static\layer\layui\layui.js"></script>
+    <script type="text/javascript" src="C:\WorkSpace\wlhoney\wlhoney-web\src\main\resources\static\jQuery\jquery-1.11.0.min.js"></script>-->
     <style type="text/css">
         .container{
             margin: 0 auto;
-            height:300px;
+            height:100%;
             min-width:320px;
             max-width:760px;
             padding-top: 30px;
             align-items: center;
             justify-items: center;
         }
-        .container input{
-            -webkit-transform: rotate(1.6grad);
-            transform: rotate(-10.3grad);
+        .upload-list{
+            margin: 10px;
         }
-        #imageUpload{
-            margin: 0 auto;
+        #multipartUpload {
+            border: dashed 0.1px;
             display: flex;
             align-items: center;
             justify-items: center;
-            width:200px;
-            height: 200px;
-            -webkit-transform: rotate(6.6deg);
-            transform: rotate(6.6deg);
         }
-        #imageUpload i {
+        #multipartUpload i {
             margin:0 auto;
         }
-
-        #imageUpload img{
-            width:100%;height:100%;
-            -webkit-transform: rotate(6.6deg);
-            transform: rotate(6.6deg);
+        .upload-img{
+            width: 92px;
+            height: 92px;
+            margin: 10px 10px 0 10px;
         }
         .uploadButton{
-            position: absolute;
-            bottom: 20px;
             align-items: center;
             justify-items: center;
             display: flex;
-            width: 100%;
+            width: 245px;
+            margin: 30px auto 0;
         }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}" class="layui-form layui-form-pane" >
+    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}">
         <input type="hidden" id="albumsId" th:value="${albumsId}"/>
-        <div class="layui-upload-drag" id="imageUpload" >
-            <span class="layui-badge-dot" style="position: absolute;top:0px;"></span>
-            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                <div class="layui-upload-list" id="demo2"></div>
+        <div class="layui-upload" style="min-height:500px;width: 95%;margin: 0 auto;">
+            <blockquote class="layui-elem-quote layui-quote-nm" style="min-height:500px; width:100%;">
+                <div class="upload-list" id="upload-list"></div>
             </blockquote>
-            <i class="layui-icon" id="imageIcon">&#xe67c;</i>
         </div>
 
         <div class="uploadButton">
-            <button type="button" class="layui-btn" id="uploadButton" style="margin:0 auto;">
+            <button type="button" class="layui-btn layui-btn-danger" id="multipartUpload">选择多文件</button>
+            <button type="button" class="layui-btn" id="uploadButton" style="margin-left:20px;">
                 <i class="layui-icon">&#xe67c;</i>上传图片
             </button>
         </div>
@@ -74,12 +70,14 @@
 
 <a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript">
+    let contextPath = $("#contextPath").attr("href");
+    let uploadUrl = contextPath + '/upload/' + $("#albumsId").val();
     layui.use('upload', function () {
         var upload = layui.upload;
         //执行实例
         var uploadInst = upload.render({
-            elem: '#imageUpload',  //绑定元素
-            url: '/upload/',  //上传接口
+            elem: '#multipartUpload',  //绑定元素
+            url: uploadUrl,  //上传接口
             method: 'post',
             multiple: true,
             auto: false, //选择文件后不自动上传
@@ -91,18 +89,28 @@
                 //预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
                 //index文件索引,file文件对象,result文件base64编码
                 obj.preview(function (index, file, result) {
-                    $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    let imgHtml = '<img src="' + result + '" alt="' + file.name + '" class="upload-img"/>';
+                    $('#upload-list').append(imgHtml);
                     //obj.resetFile(index, file, '123.jpg'); //重命名文件名，layui 2.3.0 开始新增
                     //这里还可以做一些 append 文件列表 DOM 的操作
                     //obj.upload(index, file); //对上传失败的单个文件重新上传，一般在某个事件中使用
                     //delete files[index]; //删除列表中对应的文件，一般在某个事件中使用
+                    $('#upload-list').find("img").on('click', function () {
+                        delete files[index]; //删除对应的文件
+                        $(this).remove();
+                        uploadInst.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
                 });
             },
             done: function (res) {//上传完毕回调
-
+                console.log("upload result, code: " + res.code + " ,result : " + res.message)
+                let index = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg(res.message);
+                parent.layer.close(index);
+                location.reload();
              },
              error: function () { //请求异常回调
-
+                 console.log("upload result error ")
                 }
             });
     });

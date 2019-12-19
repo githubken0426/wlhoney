@@ -33,6 +33,9 @@
         <dependency>
             <groupId>cn.honey.home</groupId>
             <artifactId>wlhoney-core</artifactId>
+            <exclusions>
+
+            </exclusions>
         </dependency>
     </dependencies>
 
