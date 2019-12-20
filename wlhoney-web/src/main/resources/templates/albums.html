@@ -59,7 +59,7 @@
                 <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
             </span>
         </label>
-        <label class="mbsc-segmented-item" onclick="upload()">
+        <label class="mbsc-segmented-item" onclick="singleUpload()">
             <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings"
                    class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
@@ -92,25 +92,6 @@
         let contextPath = $("#contextPath").attr("href");
         window.location.href = contextPath + "/photos/" + albumId;
     }
-
-    function upload() {
-        let contextPath = $("#contextPath").attr("href");
-        layer.open({
-            scrollbar: false,
-            type: 2,
-            shade: 0.1,
-            area: ['100%', '500px'],
-            title: '相册预览图',
-            //btn: ['上传', '取消'],
-            content: contextPath + "/upload/single-page/" + $("#albumsId").val()
-           /* ,yes: function (index) {
-                let body = layer.getChildFrame('body', index);
-                body.find("#uploadForm").submit();
-                layer.close(index);
-            }*/
-        });
-    }
-
 </script>
 </body>
 </html>

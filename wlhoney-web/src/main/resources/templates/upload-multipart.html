@@ -18,7 +18,7 @@
             height:100%;
             min-width:320px;
             max-width:760px;
-            padding-top: 30px;
+            padding-top: 10px;
             align-items: center;
             justify-items: center;
         }
@@ -41,7 +41,7 @@
             justify-items: center;
             display: flex;
             width: 245px;
-            margin: 30px auto 0;
+            margin: 30px auto;
         }
 
     </style>
@@ -50,7 +50,7 @@
 <div class="container">
     <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}">
         <input type="hidden" id="albumsId" th:value="${albumsId}"/>
-        <div class="layui-upload" style="min-height:500px;width: 95%;margin: 0 auto;">
+        <div class="layui-upload" style="min-height:350px;width: 95%;margin: 0 auto;">
             <blockquote class="layui-elem-quote layui-quote-nm" style="min-height:500px; width:100%;">
                 <div class="upload-list" id="upload-list"></div>
             </blockquote>

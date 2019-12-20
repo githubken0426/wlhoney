@@ -4,14 +4,12 @@ import cn.honey.home.bean.Album;
 import cn.honey.home.result.ApiResult;
 import cn.honey.home.web.util.EurekaInstanceUtils;
 import com.netflix.discovery.shared.Application;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

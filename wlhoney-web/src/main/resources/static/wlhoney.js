@@ -24,13 +24,26 @@ $(function () {
     });
 });
 
-function footerUpload() {
+function singleUpload() {
     let contextPath = $("#contextPath").attr("href");
     layer.open({
         scrollbar: false,
         type: 2,
         shade: 0.1,
-        area: ['100%', '500px'],
+        area: ['80%', '80%'],
+        title: '相册预览图',
+        //btn: ['上传', '取消'],
+        content: contextPath + "/upload/single-page/" + $("#albumsId").val()
+    });
+}
+
+function multipartUpload() {
+    let contextPath = $("#contextPath").attr("href");
+    layer.open({
+        scrollbar: false,
+        type: 2,
+        shade: 0.1,
+        area: ['80%', '80%'],
         title: '上传图片',
         content: contextPath + "/upload/multipart-page/" + $("#albumsId").val()
     });
