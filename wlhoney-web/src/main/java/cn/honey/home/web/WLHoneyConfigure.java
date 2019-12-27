@@ -5,14 +5,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.support.BasicAuthenticationInterceptor;
-import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
-
-import java.nio.charset.Charset;
 
 @Configuration
 public class WLHoneyConfigure implements WebMvcConfigurer {
@@ -66,5 +61,4 @@ public class WLHoneyConfigure implements WebMvcConfigurer {
         template.getMessageConverters().add(new FastJsonHttpMessageConverter());
         return template;
     }
-
 }

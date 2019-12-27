@@ -11,7 +11,7 @@ public abstract class AbstractBean implements Serializable {
 
     @Column(name = "create_time", insertable = false, updatable = false)
     private Date createTime;
-    @Column(name = "create_time", insertable = false, updatable = false)
+    @Column(name = "modify_time", insertable = false, updatable = false)
     private Date modifyTime;
 
     public Date getCreateTime() {

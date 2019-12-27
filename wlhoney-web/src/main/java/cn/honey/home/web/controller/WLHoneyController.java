@@ -2,19 +2,14 @@ package cn.honey.home.web.controller;
 
 import cn.honey.home.bean.Album;
 import cn.honey.home.bean.Photo;
-import cn.honey.home.web.GlobalProperties;
+import cn.honey.home.enumration.AlbumNameEnum;
 import cn.honey.home.web.enumration.ViewEnum;
 import cn.honey.home.web.util.EurekaInstanceUtils;
-import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,6 +33,18 @@ public class WLHoneyController extends AbstractController {
         String serviceUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "albums/" + year;
         logger.info("Get service url from eureka-client : {}", serviceUrl);
         List<Album> albums = restTemplate.getForObject(serviceUrl, ArrayList.class);
+        //init albums by year
+        if (CollectionUtils.isEmpty(albums)) {
+            String createUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "albums/create";
+            for (AlbumNameEnum albumEnum : AlbumNameEnum.values()) {
+                Album album = new Album();
+                album.setAlbumName(albumEnum.album());
+                album.setAlbumPhoto("bodyImage.jpg");
+                album.setDescription(albumEnum.value()+"月");
+                album.setFlag("Y");
+                restTemplate.postForObject(createUrl, album, String.class);
+            }
+        }
         map.put("albums", albums);
         map.put("year", year);
         return ViewEnum.ALBUMS.view();
