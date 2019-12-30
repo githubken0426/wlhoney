@@ -49,7 +49,7 @@
 <body>
 <div class="container">
     <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}">
-        <input type="hidden" id="albumsId" th:value="${albumsId}"/>
+        <input type="hidden" id="albumId" th:value="${albumId}"/>
         <div class="layui-upload" style="min-height:350px;width: 95%;margin: 0 auto;">
             <blockquote class="layui-elem-quote layui-quote-nm" style="min-height:350px; width:100%;">
                 <div class="upload-list" id="upload-list"></div>
@@ -68,7 +68,7 @@
 <a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript">
     let contextPath = $("#contextPath").attr("href");
-    let uploadUrl = contextPath + '/upload/' + $("#albumsId").val();
+    let uploadUrl = contextPath + '/upload/photo/' + $("#albumId").val();
     layui.use('upload', function () {
         var upload = layui.upload;
         //执行实例
@@ -79,7 +79,7 @@
             multiple: true,
             auto: false, //选择文件后不自动上传
             bindAction: '#uploadButton', //指向一个按钮触发上传
-            data: {id: 123},//可选项。额外的参数，如：{id: 123, abc: 'xxx'}
+            //data: ,//可选项。额外的参数，如：data: {id: 123, abc: 'xxx'}
             choose: function (obj) {
                 //将每次选择的文件追加到文件队列
                 var files = obj.pushFile();
@@ -103,8 +103,8 @@
                 console.log("upload result, code: " + res.code + " ,result : " + res.message)
                 let index = parent.layer.getFrameIndex(window.name);
                 parent.layer.msg(res.message);
+                parent.location.reload();
                 parent.layer.close(index);
-                location.reload();
              },
              error: function () { //请求异常回调
                  console.log("upload result error ")

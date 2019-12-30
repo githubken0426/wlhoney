@@ -34,7 +34,7 @@
 
         }
 
-        .db {
+        .container {
             height: calc(100%);
             background-size: cover;
             background-repeat: no-repeat;
@@ -42,8 +42,7 @@
     </style>
 </head>
 <body>
-<div th:style="'background-image: url('+@{'/files/'+${photos[0].name}}+')'" class="db">
-    <input type="hidden" id="albumsId" value="123"/>
+<div th:style="'background-image: url('+@{'/files/'+${photos[0].name}}+')'" class="container">
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">

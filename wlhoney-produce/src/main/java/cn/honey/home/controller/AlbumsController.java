@@ -11,16 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping(value = "/albums", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/produce/albums", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class AlbumsController {
 
     @Autowired
     private AlbumsService albumsService;
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/initial")
     @ResponseStatus(HttpStatus.OK)
     public List<Album> initAlbumsByYear(@RequestBody List<Album> albums) {
         return albumsService.saveAllAlbums(albums);
+    }
+
+    @PostMapping(value = "/save")
+    @ResponseStatus(HttpStatus.OK)
+    public Album saveAlbum(@RequestBody Album albums) {
+        return albumsService.saveAlbum(albums);
     }
 
     @GetMapping(value = "/{year}")
@@ -29,4 +35,9 @@ public class AlbumsController {
         return albumsService.findAlbumsByYear(year);
     }
 
+    @GetMapping(value = "/album/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Album findAlbumById(@PathVariable("id") long id) {
+        return albumsService.findAlbumById(id);
+    }
 }

@@ -9,4 +9,8 @@ public interface AlbumsService {
     List<Album> findAlbumsByYear(Integer year);
 
     List<Album> saveAllAlbums(List<Album> albums);
+
+    Album findAlbumById(long albumId);
+
+    Album saveAlbum(Album album);
 }

@@ -1,5 +1,6 @@
 package cn.honey.home.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Photo extends AbstractBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;

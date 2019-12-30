@@ -25,6 +25,7 @@ $(function () {
 });
 
 function singleUpload() {
+    let albumId = $(".detail-item.active input[name='albumId']").val();
     let contextPath = $("#contextPath").attr("href");
     layer.open({
         scrollbar: false,
@@ -33,11 +34,11 @@ function singleUpload() {
         area: ['80%', '80%'],
         title: '相册预览图',
         //btn: ['上传', '取消'],
-        content: contextPath + "/upload/single-page/" + $("#albumsId").val()
+        content: contextPath + "/upload/page/single/" + albumId
     });
 }
 
-function multipartUpload() {
+function multipartUpload(albumId) {
     let contextPath = $("#contextPath").attr("href");
     layer.open({
         scrollbar: false,
@@ -45,6 +46,6 @@ function multipartUpload() {
         shade: 0.1,
         area: ['80%', '80%'],
         title: '上传图片',
-        content: contextPath + "/upload/multipart-page/" + $("#albumsId").val()
+        content: contextPath + "/upload/page/multipart/" + albumId
     });
 }

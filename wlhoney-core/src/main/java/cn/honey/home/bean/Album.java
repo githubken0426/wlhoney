@@ -12,6 +12,8 @@ public class Album extends AbstractBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "year")
+    private Integer year;
     @Column(name = "album_name")
     private String albumName;
     @Column(name = "album_photo")
@@ -29,6 +31,14 @@ public class Album extends AbstractBean {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getAlbumName() {

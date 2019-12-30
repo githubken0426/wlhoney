@@ -29,22 +29,21 @@ public class WLHoneyController extends AbstractController {
     public String albums(@PathVariable("year") Integer year, Map<String, Object> map) {
         Application serverApplication = eurekaClient.getApplication("WLHONEY-SERVER");
         logger.info("Eureka Server Application instance: {}", serverApplication.getName());
-        Application application = eurekaClient.getApplication("WLHONEY-PRODUCE");
-        String serviceUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "albums/" + year;
+        String serviceUrl = this.getProduceUrl();
         logger.info("Get service url from eureka-client : {}", serviceUrl);
-        List<Album> albums = restTemplate.getForObject(serviceUrl, ArrayList.class);
+        List<Album> albums = restTemplate.getForObject(serviceUrl + "produce/albums/" + year, ArrayList.class);
         //init albums by year
         if (CollectionUtils.isEmpty(albums)) {
-            String createUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "albums/create";
             for (AlbumNameEnum albumEnum : AlbumNameEnum.values()) {
                 Album album = new Album();
+                album.setYear(year);
                 album.setAlbumName(albumEnum.album());
                 album.setAlbumPhoto("bodyImage.jpg");
                 album.setDescription(albumEnum.value() + "月");
                 album.setFlag("Y");
                 albums.add(album);
             }
-            restTemplate.postForObject(createUrl, albums, List.class);
+            restTemplate.postForObject(serviceUrl + "produce/albums/initial", albums, List.class);
         }
         map.put("albums", albums);
         map.put("year", year);
@@ -53,10 +52,15 @@ public class WLHoneyController extends AbstractController {
 
     @GetMapping("/photos/{albumId}")
     public String photos(@PathVariable("albumId") Integer albumId, Map<String, Object> map) {
-        Application application = eurekaClient.getApplication("WLHONEY-PRODUCE");
-        String serviceUrl = EurekaInstanceUtils.getEurekaServiceURI(application, "wlhoney-produce:8181") + "photos/" + albumId;
-        List<Photo> photos = restTemplate.getForObject(serviceUrl, ArrayList.class);
+        String serviceUrl = this.getProduceUrl();
+        List<Photo> photos = restTemplate.getForObject(serviceUrl + "produce/photos/" + albumId, ArrayList.class);
+        if (CollectionUtils.isEmpty(photos)) {
+            Photo defaultPhoto = new Photo();
+            defaultPhoto.setName("bodyImage.jpg");
+            photos.add(defaultPhoto);
+        }
         map.put("photos", photos);
+        map.put("albumId", albumId);
         return ViewEnum.PHOTO_CONVERFLOW.view();
     }
 }

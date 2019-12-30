@@ -57,9 +57,8 @@
 </head>
 <body>
 <div class="container">
-    <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/upload}"
-          class="layui-form layui-form-pane">
-        <input type="hidden" id="albumsId" th:value="${albumsId}"/>
+    <form id="uploadForm" method="post" enctype="multipart/form-data" class="layui-form layui-form-pane">
+        <input type="hidden" id="albumId" th:value="${albumId}"/>
         <div class="layui-upload-drag" id="imageUpload">
             <span class="layui-badge-dot" style="position: absolute;top:0px;"></span>
             <img class="layui-upload-img" id="imagePreview">
@@ -70,8 +69,7 @@
             <span class="layui-badge-dot layui-bg-orange" style="position: absolute;z-index: 9999;"></span>
             <label class="layui-form-label">Sensible</label>
             <div class="layui-input-inline">
-                <input type="text" name="username" lay-verify="required" placeholder="愿有岁月可回首，且以深情共白" autocomplete="off"
-                       class="layui-input">
+                <input type="text" id="description" name="description"  placeholder="愿有岁月可回首，且以深情共白" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="uploadButton">
@@ -85,7 +83,7 @@
 <a th:href="${#httpServletRequest.getContextPath()}" id="contextPath" style="display: none;"></a>
 <script type="text/javascript">
     let contextPath = $("#contextPath").attr("href");
-    let uploadUrl = contextPath + '/upload/' + $("#albumsId").val();
+    let uploadUrl = contextPath + '/upload/album/' + $("#albumId").val();
     layui.use('upload', function () {
         var upload = layui.upload;
         //执行实例
@@ -96,7 +94,11 @@
             size: 10240, //限制文件大小，单位 KB
             auto: false, //选择文件后不自动上传
             bindAction: '#uploadButton', //指向一个按钮触发上传
-            data: {id: 123},//可选项。额外的参数，如：{id: 123, abc: 'xxx'}
+            data: {//可选项。额外的参数，如：data:{id: 123, abc: 'xxx'}
+                description: function () {
+                    return $('#description').val();
+                }
+            },
             choose: function (obj) {
                 //将每次选择的文件追加到文件队列
                 var files = obj.pushFile();
@@ -117,8 +119,8 @@
                 console.log("upload result, code: " + res.code + " ,result : " + res.message)
                 let index = parent.layer.getFrameIndex(window.name);
                 parent.layer.msg(res.message);
+                parent.location.reload();
                 parent.layer.close(index);
-                location.reload();
             },
             error: function () { //请求异常回调
                 console.log("upload result error ")

@@ -33,33 +33,33 @@
 </header>-->
 <div style="position: absolute; top: 50%;z-index: 999999; color: white;left: 10px;">
     <span th:text="${year}"></span>
-    <input type="hidden" id="albumsId" value="123"/>
 </div>
 <section class="slideshow">
     <ul class="navigation">
         <li th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'navigation-item active':'navigation-item'">
             <span class="rotate-holder"></span>
-            <span class="background-holder"
-                  th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'"></span>
+            <span class="background-holder" th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'"></span>
         </li>
     </ul>
 
     <div class="detail">
         <div th:each="obj,state : ${albums}" th:class="${state.index eq 0}?'detail-item active':'detail-item'">
             <div class="headline" th:text="${obj.albumName}" th:onclick="'review('+${obj.id}+')'"></div>
+            <input type="hidden" name="albumId" th:value="${obj.id}"/>
+            <input type="hidden" th:value="${obj.albumPhoto}" id="${obj.id}"/>
             <div class="background" th:style="'background-image: url('+@{'/files/'+${obj.albumPhoto}}+')'"
                  th:onclick="'review('+${obj.id}+')'"></div>
         </div>
     </div>
     <div class="mbsc-material mbsc-segmented" style="position: absolute;bottom:0;z-index:9999;">
-        <label class="mbsc-segmented-item" onclick="home()">
+        <label class="mbsc-segmented-item" th:onclick="home()">
             <input type="radio" data-role="segmented" data-icon="fa-mail-reply" name="settings"
                    class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">
                 <span class="mbsc-ic mbsc-ic-fa-mail-reply"></span>
             </span>
         </label>
-        <label class="mbsc-segmented-item" onclick="singleUpload()">
+        <label class="mbsc-segmented-item" th:onclick="singleUpload()">
             <input type="radio" data-role="segmented" data-icon="fa-retweet" name="settings"
                    class="mbsc-control mbsc-control-ev" data-touch="1">
             <span class="mbsc-segmented-content">

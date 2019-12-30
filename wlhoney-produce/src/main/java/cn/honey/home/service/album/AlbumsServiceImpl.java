@@ -22,4 +22,14 @@ public class AlbumsServiceImpl implements AlbumsService {
         return albumsDao.saveAll(albums);
     }
 
+    @Override
+    public Album findAlbumById(long albumId) {
+        return albumsDao.findAlbumById(albumId);
+    }
+
+    @Override
+    public Album saveAlbum(Album album) {
+        return albumsDao.save(album);
+    }
+
 }

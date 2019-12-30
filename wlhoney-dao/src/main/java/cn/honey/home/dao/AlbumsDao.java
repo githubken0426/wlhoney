@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AlbumsDao extends JpaRepository<Album, Long> {
 
-    @Query(value = "select * from wl_album where YEAR(create_time)=:year ", nativeQuery = true)
+    @Query(value = "select * from wl_album where flag='Y' and year=:year ", nativeQuery = true)
     List<Album> findAlbumsByYear(@Param("year") Integer year);
 
     Album findAlbumById(long albumId);

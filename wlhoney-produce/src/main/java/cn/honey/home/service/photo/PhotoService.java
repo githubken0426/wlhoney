@@ -6,5 +6,7 @@ import cn.honey.home.bean.Photo;
 import java.util.List;
 
 public interface PhotoService {
-    List<Photo> findPhotosByAlbum(Integer albumId);
+    List<Photo> findPhotosByAlbumId(Long albumId);
+
+    Photo savePhoto(Photo photo);
 }

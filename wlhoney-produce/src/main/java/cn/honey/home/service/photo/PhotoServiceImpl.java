@@ -14,7 +14,12 @@ public class PhotoServiceImpl implements PhotoService {
     private PhotoDao photoDao;
 
     @Override
-    public List<Photo> findPhotosByAlbum(Integer albumId) {
-        return photoDao.findPhotosByAlbum(albumId);
+    public List<Photo> findPhotosByAlbumId(Long albumId) {
+        return photoDao.findPhotosByAlbumId(albumId);
+    }
+
+    @Override
+    public Photo savePhoto(Photo photo) {
+        return photoDao.save(photo);
     }
 }
