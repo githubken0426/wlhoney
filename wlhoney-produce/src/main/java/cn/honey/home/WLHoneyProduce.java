@@ -8,9 +8,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication(scanBasePackages = {"cn.honey.home"}, exclude = {DataSourceAutoConfiguration.class})
 @EnableEurekaClient
 //@EnableDiscoveryClient
-public class WLHoneyClientProduce {
+public class WLHoneyProduce {
 
     public static void main(String[] args) {
-        SpringApplication.run(WLHoneyClientProduce.class, args);
+        SpringApplication.run(WLHoneyProduce.class, args);
     }
 }

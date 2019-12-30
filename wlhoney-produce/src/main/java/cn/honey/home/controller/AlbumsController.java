@@ -11,36 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/albums", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class AlbumsController {
 
     @Autowired
     private AlbumsService albumsService;
 
-    @PostMapping(value = "/albums/create")
+    @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.OK)
-    public Album initAlbumsByYear(@RequestBody Album album) {
-        return albumsService.saveAlbum(album);
+    public List<Album> initAlbumsByYear(@RequestBody List<Album> albums) {
+        return albumsService.saveAllAlbums(albums);
     }
 
-    @GetMapping(value = "/albums/{year}")
+    @GetMapping(value = "/{year}")
     @ResponseStatus(HttpStatus.OK)
     public List<Album> findAlbums(@PathVariable("year") Integer year) {
         return albumsService.findAlbumsByYear(year);
     }
 
-    @GetMapping(value = "/album/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Album findAlbumById(@PathVariable("id") long id) {
-        Set<Photo> photos = new HashSet<>();
-        Album album3 = new Album();
-        album3.setAlbumName("北京");
-        Photo defaultPhoto3 = new Photo();
-        defaultPhoto3.setName("bodyImage.jpg");
-        photos.add(defaultPhoto3);
-        album3.setAlbumPhoto("bodyImage.jpg");
-        album3.setPhotos(photos);
-        album3.setCreateTime(new Date());
-        return album3;
-    }
 }

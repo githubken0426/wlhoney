@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "wl_photo")
 public class Photo extends AbstractBean {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
     @JoinColumn(name = "album_id")

@@ -40,10 +40,11 @@ public class WLHoneyController extends AbstractController {
                 Album album = new Album();
                 album.setAlbumName(albumEnum.album());
                 album.setAlbumPhoto("bodyImage.jpg");
-                album.setDescription(albumEnum.value()+"月");
+                album.setDescription(albumEnum.value() + "月");
                 album.setFlag("Y");
-                restTemplate.postForObject(createUrl, album, String.class);
+                albums.add(album);
             }
+            restTemplate.postForObject(createUrl, albums, List.class);
         }
         map.put("albums", albums);
         map.put("year", year);

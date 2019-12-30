@@ -18,12 +18,8 @@ public class AlbumsServiceImpl implements AlbumsService {
     }
 
     @Override
-    public Album findAlbumById(long albumId) {
-        return albumsDao.findAlbumById(albumId);
+    public List<Album> saveAllAlbums(List<Album> albums) {
+        return albumsDao.saveAll(albums);
     }
 
-    @Override
-    public Album saveAlbum(Album album) {
-        return albumsDao.save(album);
-    }
 }

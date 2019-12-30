@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(name = "wl_album")
 public class Album extends AbstractBean {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "album_name")
     private String albumName;
