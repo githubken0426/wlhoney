@@ -22,6 +22,12 @@ public class PhotosController {
         return photoService.findPhotosByAlbumId(albumId);
     }
 
+    @GetMapping(value = "/photo/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Photo findPhotosById(@PathVariable("id") Long id) {
+        return photoService.findPhotoById(id);
+    }
+
     @PostMapping(value = "/save")
     @ResponseStatus(HttpStatus.OK)
     public Photo savePhoto(@RequestBody Photo photo) {

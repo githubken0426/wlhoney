@@ -1,8 +1,6 @@
 package cn.honey.home.web.controller;
 
-import cn.honey.home.web.enumration.ViewEnum;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import cn.honey.home.enumration.ViewEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

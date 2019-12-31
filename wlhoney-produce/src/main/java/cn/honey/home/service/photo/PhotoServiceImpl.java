@@ -22,4 +22,9 @@ public class PhotoServiceImpl implements PhotoService {
     public Photo savePhoto(Photo photo) {
         return photoDao.save(photo);
     }
+
+    @Override
+    public Photo findPhotoById(Long id) {
+        return photoDao.findPhotoById(id);
+    }
 }

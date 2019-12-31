@@ -49,3 +49,23 @@ function multipartUpload(albumId) {
         content: contextPath + "/upload/page/multipart/" + albumId
     });
 }
+
+function updateDescription(ele){
+    let contextPath = $("#contextPath").attr("href");
+    let id = $(ele).prev().val();
+    let albumId = $("#albumId").val();
+    $.ajax({
+        url: contextPath + "/upload/photo/description",
+        type: "POST",
+        async: true,
+        data: {description: ele.value, id: id,albumId:albumId},
+        time: 5000,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            console.log(data.message);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+        }
+    });
+}

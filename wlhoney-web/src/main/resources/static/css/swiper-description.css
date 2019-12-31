@@ -1,0 +1,51 @@
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    height: calc(100%);
+}
+
+.swiper-container {
+    width: 100%;
+    position: relative;
+    top: calc(10%);
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: calc(300px);
+    height: calc(480px);
+
+}
+
+.container {
+    height: calc(100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.description {
+    font-size: 17px;
+    color: antiquewhite;
+    margin: 20px;
+    background-color: transparent;
+    border: 0;
+    width: 260px;
+    resize: none;
+}
+
+input::-webkit-input-placeholder {
+    color: antiquewhite;
+}
+
+input::-moz-placeholder {
+    color: antiquewhite;
+}
+
+input::-ms-input-placeholder {
+    color: antiquewhite;
+}

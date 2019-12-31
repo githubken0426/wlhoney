@@ -1,9 +1,10 @@
-package cn.honey.home.web.enumration;
+package cn.honey.home.enumration;
 
 public enum ViewEnum {
     ALBUMS("albums"),
     UPLOAD_ALBUM("upload-album"),
     UPLOAD_PHOTOS("upload-photos"),
+
     PHOTO_CONVERFLOW("photo-coverflow");
 
     private ViewEnum(String view) {

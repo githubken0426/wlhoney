@@ -3,6 +3,7 @@ package cn.honey.home.web.controller;
 import cn.honey.home.bean.Album;
 import cn.honey.home.bean.Photo;
 import cn.honey.home.result.ApiResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -74,6 +75,48 @@ public class UploadController extends AbstractController {
             result.setCode("0");
             result.setMessage(global.getSuccessOperation());
         } catch (IOException e) {
+            e.printStackTrace();
+            result.setCode("1");
+            result.setMessage(global.getErrorOperation());
+        }
+        return result;
+    }
+
+    /**
+     * update photo description
+     * @param id
+     * @param description
+     * @return
+     */
+    @PostMapping("/photo/description")
+    public ApiResult<Integer> uploadPhotos(@RequestParam("id") Long id, @RequestParam("albumId") Long albumId,
+                                           @RequestParam("description") String description) {
+        ApiResult<Integer> result = new ApiResult();
+        try {
+            if (StringUtils.isBlank(description)) {
+                result.setCode("0");
+                result.setMessage(global.getSuccessOperation());
+                return result;
+            }
+            String serviceUrl = this.getProduceUrl();
+            Photo photo = restTemplate.getForObject(serviceUrl + "produce/photos/photo/{1}", Photo.class, id);
+            Album album = restTemplate.getForObject(serviceUrl + "produce/albums/album/{1}", Album.class, albumId);
+            if (photo == null || album == null) {
+                result.setCode("1");
+                result.setMessage(global.getErrorOperation());
+                return result;
+            }
+            if(description.equals(photo.getDescription())){
+                result.setCode("0");
+                result.setMessage(global.getSuccessOperation());
+                return result;
+            }
+            photo.setAlbum(album);
+            photo.setDescription(description);
+            restTemplate.postForObject(serviceUrl + "produce/photos/save", photo, Photo.class);
+            result.setCode("0");
+            result.setMessage(global.getSuccessOperation());
+        } catch (Exception e) {
             e.printStackTrace();
             result.setCode("1");
             result.setMessage(global.getErrorOperation());

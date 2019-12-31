@@ -1,32 +1,38 @@
 package cn.honey.home.enumration;
 
 public enum AlbumNameEnum {
-    JAN("January", 1),
-    FEB("February", 2),
-    MAR("March", 3),
-    APR("April", 4),
-    MAY("May", 5),
-    JUN("June", 6),
-    JUL("July", 7),
-    AUG("August", 8),
-    SEPT("September", 9),
-    OCT("October", 10),
-    NOV("November", 11),
-    DEC("December", 12);
+    JANUARY("January", "一月", ViewEnum.PHOTO_CONVERFLOW),
+    FEBRUARY("February", "二月", ViewEnum.PHOTO_CONVERFLOW),
+    MARCH("March", "三月", ViewEnum.PHOTO_CONVERFLOW),
+    APRIL("April", "四月", ViewEnum.PHOTO_CONVERFLOW),
+    MAY("May", "五月", ViewEnum.PHOTO_CONVERFLOW),
+    JUNE("June", "六月", ViewEnum.PHOTO_CONVERFLOW),
+    JULY("July", "七月", ViewEnum.PHOTO_CONVERFLOW),
+    AUGUST("August", "八月", ViewEnum.PHOTO_CONVERFLOW),
+    SEPTEMBER("September", "久月", ViewEnum.PHOTO_CONVERFLOW),
+    OCTOBER("October", "十月", ViewEnum.PHOTO_CONVERFLOW),
+    NOVEMBER("November", "十一月", ViewEnum.PHOTO_CONVERFLOW),
+    DECEMBER("December", "十二月", ViewEnum.PHOTO_CONVERFLOW);
 
-    private AlbumNameEnum(String album, int value) {
+    private AlbumNameEnum(String album, String value, ViewEnum viewEnum) {
         this.album = album;
         this.value = value;
+        this.viewEnum = viewEnum;
     }
 
     private String album;
-    private int value;
+    private String value;
+    private ViewEnum viewEnum;
 
     public String album() {
         return album;
     }
 
-    public int value() {
+    public String value() {
         return value;
+    }
+
+    public ViewEnum viewEnum() {
+        return viewEnum;
     }
 }

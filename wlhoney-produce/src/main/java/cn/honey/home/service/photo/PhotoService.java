@@ -9,4 +9,6 @@ public interface PhotoService {
     List<Photo> findPhotosByAlbumId(Long albumId);
 
     Photo savePhoto(Photo photo);
+
+    Photo findPhotoById(Long id);
 }

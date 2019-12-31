@@ -8,46 +8,25 @@
     <link rel="stylesheet" type="text/css" th:href="@{/swiper/swiper.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/mobiscroll/css/mobiscroll.custom-3.0.0-beta6.min.css}"/>
-
-    <style>
-        body {
-            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            color: #000;
-            margin: 0;
-            padding: 0;
-            height: calc(100%);
-        }
-
-        .swiper-container {
-            width: 100%;
-            position: relative;
-            top: calc(25%);
-            padding-bottom: 50px;
-        }
-
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: calc(300px);
-            height: calc(400px);
-
-        }
-
-        .container {
-            height: calc(100%);
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/swiper-description.css}"/>
 </head>
 <body>
 <div th:style="'background-image: url('+@{'/files/'+${photos[0].name}}+')'" class="container">
+    <input type="hidden" id="albumId" th:value="${albumId}"/>
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" th:each="obj,state : ${photos}"
-                 th:style="'background-image: url('+@{'/files/'+${obj.name}}+')'"></div>
+            <div class="swiper-slide" th:each="obj,state : ${photos}" th:style="'background-image: url('+@{'/files/'+${obj.name}}+')'">
+                <div data-swiper-parallax="-200" data-swiper-parallax-opacity="0.5">
+                    <input type="hidden" name="id" th:value="${obj.id}"/>
+                    <textarea name="description" th:onblur="updateDescription(this)"
+                              th:text="${obj.description}" rows="4" cols="" class="layui-textarea description"
+                              placeholder="是时候留下美好的回忆了!最多不能超过50个字符哦！" maxlength="50"
+                              οnchange="this.value=this.value.substring(0, 50)"
+                              οnkeydοwn="this.value=this.value.substring(0, 50)"
+                              οnkeyup="this.value=this.value.substring(0, 50)"></textarea>
+                </div>
+            </div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
