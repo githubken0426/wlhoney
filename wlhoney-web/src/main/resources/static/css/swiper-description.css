@@ -8,10 +8,9 @@ body {
 }
 
 .swiper-container {
-    width: 100%;
+    width: calc(100%);
     position: relative;
     top: calc(10%);
-    padding-bottom: 50px;
 }
 
 .swiper-slide {
@@ -19,11 +18,11 @@ body {
     background-size: cover;
     width: calc(300px);
     height: calc(480px);
-
 }
 
 .container {
     height: calc(100%);
+    width: calc(100%);
     background-size: cover;
     background-repeat: no-repeat;
 }

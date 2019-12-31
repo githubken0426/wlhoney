@@ -5,7 +5,8 @@ public enum ViewEnum {
     UPLOAD_ALBUM("upload-album"),
     UPLOAD_PHOTOS("upload-photos"),
 
-    PHOTO_CONVERFLOW("photo-coverflow");
+    PHOTO_CONVERFLOW("photo-coverflow"),
+    PHOTO_CUBE("photo-cube");
 
     private ViewEnum(String view) {
         this.view = view;
