@@ -3,7 +3,7 @@ package cn.honey.home.enumration;
 public enum AlbumNameEnum {
     JANUARY("January", "一月", ViewEnum.PHOTO_CONVERFLOW),
     FEBRUARY("February", "二月", ViewEnum.PHOTO_CUBE),
-    MARCH("March", "三月", ViewEnum.PHOTO_CONVERFLOW),
+    MARCH("March", "三月", ViewEnum.PHOTO_ZOOM),
     APRIL("April", "四月", ViewEnum.PHOTO_CONVERFLOW),
     MAY("May", "五月", ViewEnum.PHOTO_CONVERFLOW),
     JUNE("June", "六月", ViewEnum.PHOTO_CONVERFLOW),

@@ -8,6 +8,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/swiper/swiper.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/mobiscroll/css/mobiscroll.custom-3.0.0-beta6.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/swiper-description.css}"/>
+    <style type="text/css">
+        #slide {
+            background-position: center;
+            background-size: cover;
+            width: calc(100%);
+            height: calc(480px);
+        }
+    </style>
 </head>
 <body>
 <div th:style="'background-image: url('+@{'/files/'+${photos[0].name}}+')'" class="container">
@@ -15,7 +23,7 @@
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" th:each="obj,state : ${photos}" th:style="'background-image: url('+@{'/files/'+${obj.name}}+')'">
+            <div class="swiper-slide" id="slide" th:each="obj,state : ${photos}" th:style="'background-image: url('+@{'/files/'+${obj.name}}+')'">
                 <div data-swiper-parallax="-200" data-swiper-parallax-opacity="0.5">
                     <input type="hidden" name="id" th:value="${obj.id}"/>
                     <textarea name="description" th:onblur="updateDescription(this)"
@@ -41,22 +49,16 @@
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
-        effect: 'coverflow',
+        zoom: true,
         loop: true,
         grabCursor: true,
         centeredSlides: true,
+        lazy: true,
         slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
         pagination: {
             el: '.swiper-pagination',
             dynamicBullets: true,
-        },
+        }
     });
 </script>
 </body>
