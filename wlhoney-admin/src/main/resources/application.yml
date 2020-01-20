@@ -1,0 +1,48 @@
+server:
+  port: 8183
+  servlet:
+    context-path: /wlhoney
+
+spring:
+  application:
+    name: wlhoney-admin
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+  #\u516C\u5F00\u6240\u6709\u7684\u7AEF\u70B9
+  management:
+    endpoints:
+      web:
+        exposure:
+          #\u5C55\u793A\u67D0\u4E9B\u7AEF\u70B9\uFF08\u9ED8\u8BA4\u5C55\u793Ahealth,info\uFF0C\u5176\u4F59\u5747\u7981\u6B62\uFF09
+          include: health,info,metrics
+        # CORS\u8DE8\u57DF\u652F\u6301
+        cors:
+          allowed-origins: "*"
+          allowed-methods: GET,POST
+    #health\u7AEF\u70B9\u7684\u8BBF\u95EE\u6743\u9650
+    endpoint:
+      health:
+        #\u9009\u62E9\u5C55\u793A
+        show-details: always
+    health:
+      mail:
+        enabled: false  #\u4E0D\u76D1\u63A7\u90AE\u4EF6\u670D\u52A1\u5668\u72B6\u6001
+  info:
+    app:
+      name: @project.artifactId@
+    build:
+      artifactId: @project.artifactId@
+      version: @project.version@
+    author:
+      name: ken
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://eureka-server:eureka-server@wlhoney-server-1st:8081/eureka/, http://eureka-server:eureka-server@wlhoney-server-2nd:8082/eureka/
