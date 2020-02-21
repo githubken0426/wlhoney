@@ -297,8 +297,7 @@ public class MyHashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clo
         if (s > 0) {
             if (table == null) { // pre-size
                 float ft = ((float) s / loadFactor) + 1.0F;
-                int t = ((ft < (float) MAXIMUM_CAPACITY) ?
-                        (int) ft : MAXIMUM_CAPACITY);
+                int t = ((ft < (float) MAXIMUM_CAPACITY) ? (int) ft : MAXIMUM_CAPACITY);
                 if (t > threshold)
                     threshold = tableSizeFor(t);
             } else if (s > threshold)
@@ -363,17 +362,15 @@ public class MyHashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clo
         MyHashMap.Node<K, V> first, e;
         int n;
         K k;
-        if ((tab = table) != null && (n = tab.length) > 0 &&
-                (first = tab[(n - 1) & hash]) != null) {
-            if (first.hash == hash && // always check first node
-                    ((k = first.key) == key || (key != null && key.equals(k))))
+        if ((tab = table) != null && (n = tab.length) > 0 && (first = tab[(n - 1) & hash]) != null) {
+            // always check first node
+            if (first.hash == hash && ((k = first.key) == key || (key != null && key.equals(k))))
                 return first;
             if ((e = first.next) != null) {
                 if (first instanceof MyHashMap.TreeNode)
                     return ((MyHashMap.TreeNode<K, V>) first).getTreeNode(hash, key);
                 do {
-                    if (e.hash == hash &&
-                            ((k = e.key) == key || (key != null && key.equals(k))))
+                    if (e.hash == hash && ((k = e.key) == key || (key != null && key.equals(k))))
                         return e;
                 } while ((e = e.next) != null);
             }
@@ -419,37 +416,42 @@ public class MyHashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clo
      * @param evict        if false, the table is in creation mode.
      * @return previous value, or null if none
      */
-    final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
-                   boolean evict) {
+    final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
         MyHashMap.Node<K, V>[] tab;
         MyHashMap.Node<K, V> p;
         int n, i;
+        //对该桶进行第一次初始化，桶的数组大小为16
         if ((tab = table) == null || (n = tab.length) == 0)
             n = (tab = resize()).length;
+        //判断桶的下标是否含有第一个元素，没有的话就放进去
         if ((p = tab[i = (n - 1) & hash]) == null)
             tab[i] = newNode(hash, key, value, null);
         else {
+            //桶的下标已经存在第一个元素了
             MyHashMap.Node<K, V> e;
             K k;
-            if (p.hash == hash &&
-                    ((k = p.key) == key || (key != null && key.equals(k))))
+            //判断桶下标中存在的第一个元素的hash值和key值是否相等
+            if (p.hash == hash && ((k = p.key) == key || (key != null && key.equals(k))))
                 e = p;
+            //hash值相等，key不相等则判断标中存在的第一个元素是否为树的节点,是的话则将元素添加到树节点上
             else if (p instanceof MyHashMap.TreeNode)
                 e = ((MyHashMap.TreeNode<K, V>) p).putTreeVal(this, tab, hash, key, value);
-            else {
+            else { //hash值相等，key不相等放到链表中
                 for (int binCount = 0; ; ++binCount) {
-                    if ((e = p.next) == null) {
-                        p.next = newNode(hash, key, value, null);
+                    if ((e = p.next) == null) {//判断该链表尾部指针是不是空的
+                        p.next = newNode(hash, key, value, null);//在链表的尾部创建链表节点
+                        //判断链表的长度是否达到转化红黑树的临界值，临界值为8
                         if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
-                            treeifyBin(tab, hash);
+                            treeifyBin(tab, hash);//链表结构转树形结构
                         break;
                     }
-                    if (e.hash == hash &&
-                            ((k = e.key) == key || (key != null && key.equals(k))))
+                    //判断链表中的节点是否与该节点相等
+                    if (e.hash == hash && ((k = e.key) == key || (key != null && key.equals(k))))
                         break;
                     p = e;
                 }
             }
+            //判断当前的key已经存在的情况下，再来一个相同的hash值、key值时返回新来的value这个值
             if (e != null) { // existing mapping for key
                 V oldValue = e.value;
                 if (!onlyIfAbsent || oldValue == null)
@@ -459,6 +461,7 @@ public class MyHashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clo
             }
         }
         ++modCount;
+        //直到桶的数组大小超过了负载的临界值时，则进行扩容
         if (++size > threshold)
             resize();
         afterNodeInsertion(evict);
