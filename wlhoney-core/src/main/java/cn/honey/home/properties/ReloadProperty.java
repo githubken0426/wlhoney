@@ -1,6 +1,6 @@
 package cn.honey.home.properties;
 
-import cn.honey.home.util.EnviromentUtils;
+import cn.honey.home.util.EnvironmentUtils;
 import org.apache.commons.configuration2.CompositeConfiguration;
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
@@ -35,7 +35,7 @@ public class ReloadProperty {
     }
 
     private static void init() {
-        File path = new File(EnviromentUtils.getConfBasePath());
+        File path = new File(EnvironmentUtils.getConfBasePath());
         File[] propertiesFiles = path.listFiles((File pathname)
                 -> pathname.getName().endsWith(PROPERTIES_FILE_EXTENSION));
 
@@ -62,7 +62,7 @@ public class ReloadProperty {
     private static long getTriggerPeriod() {
         try {
             Properties properties = new Properties();
-            properties.load(new FileReader(EnviromentUtils.getPropertiesPath("config-env.properties")));
+            properties.load(new FileReader(EnvironmentUtils.getPropertiesPath("config-env.properties")));
             return Long.valueOf(properties.getProperty("properties.reloadTriggerPeriodSec"));
 
         } catch (Exception e) {

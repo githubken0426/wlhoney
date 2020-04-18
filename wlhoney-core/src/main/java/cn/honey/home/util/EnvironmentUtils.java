@@ -2,7 +2,7 @@ package cn.honey.home.util;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class EnviromentUtils {
+public class EnvironmentUtils {
 
     private static final String FILE_SEPARATOR = System.getProperty("file.separator");
     private static final String APP_VERSION = "APP_VERSION";
